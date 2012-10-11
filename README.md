@@ -5,7 +5,7 @@ Project Assignment: UoL Hotel
 
 Team members:
 
-Zlatan Marijanović
-Sob Noguezi Cromwell
-Sidik Mahama
+Zlatan Marijanović,
+Sob Noguezi Cromwell,
+Sidik Mahama,
 Jone Lura
