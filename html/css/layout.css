@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	min-width: 960px;
+	height: 100%;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+.holder {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+.w140, .w300, .w460, .w620, .w940 {
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.w140 {
+	width: 140px;
+}
+.w300 {
+	width: 300px;
+}
+.w460 {
+	width: 460px;
+}
+.w620 {
+	width: 620px;
+}
+.w940 {
+	width: 940px;
+}
+.pad_top_5 {
+	padding-top: 5px;
+}
+.pad_bot_5 {
+	padding-bottom: 5px;
+}
+.pad_top_10 {
+	padding-top: 10px;
+}
+.pad_bot_10 {
+	padding-bottom: 10px;
+}
+.pad_all_10 {
+	padding: 10px;
+}
+.pad_top_20 {
+	padding-top: 20px;
+}
+.pad_bot_20 {
+	padding-bottom: 20px;
+}
+.pad_left_800 {
+	padding-left: 800px;
+}
+.bar_right {
+	position: relative;
+	left: 640px;
+}
+.bar_left {
+	position: relative;
+	left: -320px;
+}
+.holder .zero_margL {
+	margin-left: 0;
+}
+.holder .zero_margR {
+	margin-right: 0;
+}

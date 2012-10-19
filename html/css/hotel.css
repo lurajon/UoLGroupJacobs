@@ -1,0 +1,257 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+.site_logo {
+	height: 70px;
+	background-image: url(../images/UoL_logo.jpg);
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	padding-left: 310px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 5em;
+	font-weight: 400;
+	color: #0033CC;
+	padding-bottom: 0.15em;
+}
+.member_entry {
+	text-align: center;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-weight: 200;
+}
+.member_entry a {
+	background-color: #1A2E88;
+	height: 30px;
+	padding-top: 8px;
+	padding-bottom: 2px;
+	display: block;
+	color: #FFF;
+	text-decoration: none;
+}
+.member_entry:hover > a {
+	background-color: #FF0000;
+	color: #FFF;
+}
+.menu_holder {
+	background-color: transparent;
+	background-image: url(../images/blu_menu_rib.png);
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-clip: border-box;
+	background-origin: padding-box;
+	background-size: auto auto;
+	height: 50px;
+	margin-left: -10px;
+}
+.menu_main {
+	background-color: #0033CC;
+	height: 40px;
+	color: #FFF;
+	padding: 0px 0px 0px 10px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 1.1em;
+	font-weight: 200;
+}
+.menu_main ul {
+	padding: 0;
+	margin: 0;
+}
+.menu_main li {
+	list-style: none;
+	position: relative;
+	float: left;
+	text-align: center;
+}
+.menu_main a {
+	height: 30px;
+	padding-top: 8px;
+	padding-bottom: 2px;
+	display: block;
+	width: 117.5px;
+	color: white;
+	text-decoration: none;
+}
+.menu_main :hover > a {
+	background-color: #9AB3DB;
+	color: #363795;
+}
+.image_slider {
+	height: 300px;
+	position: relative;
+	background-image: url(../images/main_slider/image1.jpg);
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position: left top;
+	cursor: pointer;
+}
+.slider_big {
+	background-image: url(../images/main_slider/levni-hotel-image-gallery-3-b.jpg);
+}
+.header_holder {
+	background-color: transparent;
+	background-image: url(../images/blu_h1_rib.png);
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-clip: border-box;
+	background-origin: padding-box;
+	background-size: auto auto;
+	height: 50px;
+	margin-left: -10px;
+}
+h1, h2, h3 {
+	height: 30px;
+	color: #FFF;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 1.1em;
+	font-weight: 200;
+	padding-top: 8px;
+	padding-bottom: 2px;
+	padding-left: 20px;
+	margin-top: 0px !important;
+}
+h1 {
+	background-color: #1A2E88;
+}
+h2 {
+	background-color: #0033CC;
+}
+h3 {
+	background-color: #1A2E88;
+}
+p {
+	border: 0;
+	margin: 0;
+	padding: 0 10px;
+	font-size: 0.8em;
+	text-align: justify;
+}
+.footer {
+	border-top: 1px dotted #9AB3DB;
+	text-align: left;
+	color: #9AB3DB;
+	font-size: 0.7em;
+}
+.footer a {
+	text-decoration: none;
+	color: #7C93BE;
+}
+.footer :hover > a {
+	color: #363795;
+}
+.copyright {
+	float: left;
+	position: relative;
+}
+.footer_contact {
+	float: right;
+	position: relative;
+	text-align: right;
+}
+.confroom_link {
+	height: 200px;
+	position: relative;
+	background-attachment: scroll;
+	background-image: url(../images/confroom.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	cursor: pointer;
+}
+.img_overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: visible;
+	padding: 10px;
+	color: #FFF;
+	font-size: 0.8em;
+}
+.large_color1 {
+	background-color: rgba(35,110,189,0.5);
+	height: 30px;
+	padding-top: 15px;
+	font-size: 1em;
+}
+.overlay_color1 {
+	background-color: rgba(9,57,201,0.5);
+}
+.overlay_color2 {
+	background-color: rgba(35,110,189,0.5);
+}
+/* social networks */
+.socnet_link ul {
+	padding: 0;
+	margin: 0;
+}
+.socnet_link li {
+	list-style: none;
+	position: relative;
+	float: left;
+	font-size: 0.9em;
+	display: block;
+	height: 40px;
+	padding-bottom: 10px;
+	padding-top: 8px;
+	padding-left: 60px;
+}
+.socnet_link a {
+	text-decoration: none;
+	color: #7C93BE;
+}
+.socnet_link :hover > a {
+	color: #363795;
+}
+.socnet_link .facebook {
+	background-attachment: scroll;
+	background-image: url(../images/f_logo.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.socnet_link .twitter {
+	background-attachment: scroll;
+	background-image: url(../images/twitter.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.uol_link ul {
+	padding: 0;
+	margin: 0;
+}
+.uol_link li {
+	color: #7C93BE;
+	font-size: 0.8em;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	list-style-image: none;
+	list-style-type: square;
+	list-style-position: inside;
+}
+.uol_link a {
+	text-decoration: none;
+	color: #7C93BE;
+}
+.uol_link :hover > a {
+	color: #363795;
+}
+.booking_form_small form {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 0.8em;
+}
+label {
+	float: left;
+	clear: left;
+	width: 80px;
+	height: 25px;
+	font-size: 0.9em;
+	padding-top: 3px;
+}
+.date_range, .small_form_select {
+	float: left;
+	width: 160px;
+}
