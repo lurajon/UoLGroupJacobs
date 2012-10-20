@@ -23,8 +23,8 @@
         <ul>
           <li><a href="../index.html">Home</a></li>
           <li><a href="../user/users.html">User Management</a></li>
-          <li><a href="../reservations/reservations.html">Reservations</a></li>
-          <li><a href="guestbook.html">Guestbook Management</a></li>
+          <li><a href="reservations.html">Reservations</a></li>
+          <li><a href="../guestbook/guestbook.html">Guestbook Management</a></li>
           <li><a href="../../index.html">Back to Hotel Site</a></li>
         </ul>
       </div>
@@ -33,69 +33,46 @@
   <div class="clear pad_bot_10"></div>
    <!-- Content -->
   <div class="w940">
-    <div id="search">
-        <form action="#">
-            <input id="searchValue" type="text" name="searchValue" value="" /><input type="submit" value="Search" />
-        </form>
-    </div>
     
     <div class="header_holder margin_top_10">
       <!-- JL: enter your content header within <h1> element -->
-        <h1>New Guestbook entries</h1>
+        <h1>Details</h1>
        <!-- // JL -->
       </div>
       <!-- JL: please use space below to add your page contents -->
-        <table class="w100p margin_top_10">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Posted By</th>
-                    <th>Posted Date</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
+      <form action="entryDetails.html">
+        <input type="hidden" value="{entry.entryId}" name="entryId" />
+        <table id="details" class="w100p margin_top_10">
             <tbody>
                 <tr>
-                    <td>{guestBookEntry.title}</td>
-                    <td>{guestBookEntry.postedBy}</td>
-                    <td>{guestBookEntry.postedDate}</td>
-                    <td><a href="entryDetails.html?entryId={entry.entryId}">Details</a></td>
+                  <td colspan="5">{entry.status}</td>
                 </tr>
-            </tbody>
-        </table>    
-      <!-- //JL -->
-    </div>
-   
-  <div class="clear pad_bot_20"></div>
-  <div class="w940">
-     <div class="header_holder margin_top_10">
-      <!-- JL: enter your content header within <h1> element -->
-        <h1>Published Guestbook entries</h1>
-       <!-- // JL -->
-      </div>
-      <!-- JL: please use space below to add your page contents -->
-        <table class="w100p margin_top_10">
-            <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Posted By</th>
-                    <th>Posted Date</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-            <tbody>
+                  <td>Title</td>
+                  <td colspan="4">{entry.title}</td>
+               </tr>
                 <tr>
-                    <td>{guestBookEntry.title}</td>
-                    <td>{guestBookEntry.postedBy}</td>
-                    <td>{guestBookEntry.postedDate}</td>
-                    <td><a href="entryDetails.html?entryId={entry.entryId}">Details</a></td>
+                    <td>Posted By</td>
+                    <td>{entry.postedBy}</td>
+                    <td></td>
+                    <td>Posted Date</td>
+                    <td>{entry.postedDate}</td>
                 </tr>
+               <tr>
+                <td colspan="5">{entry.text}</td>
+               </tr>
             </tbody>
-        </table>    
+        </table>
+        <div class="margin_top_10">
+          <!-- only visible when the status of the entry allows the entry to be posted -->
+          <input type="submit" name="post" value="Post" />
+          <input type="submit" name="delete" value="Delete" />
+        </div>
       <!-- //JL -->
+      </form>
     </div>
   
- <div class="clear pad_bot_20"></div>
+  <div class="clear pad_bot_20"></div>
   <div class="w940">
     <div class="footer pad_top_10">
       <div class="copyright">&copy; University of Liverpool Hotel</div>
