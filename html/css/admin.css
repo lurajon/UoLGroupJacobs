@@ -1,0 +1,75 @@
+.menu_holder {
+    background: url("../images/pink_menu_rib.png") no-repeat scroll left top transparent;
+}
+
+.menu_main {
+    background-color: #DA0087;
+}
+
+.menu_main a {
+    min-width: 120px;
+    padding: 8px 10px 2px;
+    width: auto;
+}
+
+.menu_main *:hover > a {
+    background-color: #7f2D3A;
+    color: #FFFFFF;
+}
+
+.header_holder {
+    background: url("../images/purple_h1_rib.png") no-repeat scroll left top transparent;
+    
+}
+
+.admin h1 {
+    background-color: #7F2937;
+}
+
+.admin h1 span.link {
+    
+    float: right;
+    margin-right: 10px;
+    padding: 1px 10px;
+}
+
+.admin h1 span.link a {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+    text-indent: 18px;
+    background: url(../images/add.png) no-repeat 0 center transparent;
+    display: block;
+}
+
+.admin table {
+    border-spacing: 0;
+    font-size: 0.8em;
+}
+
+.admin table th, .admin table td {
+    border-top: 1px solid #DEDEDE;
+    border-left: 1px solid #DEDEDE;
+    padding: 4px;
+}
+
+.admin table tr:last-child td {
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.admin table th:last-child, .admin table td:last-child {
+    border-right: 1px solid #DEDEDE;
+}
+
+.admin table#details td, .admin table#details th {
+    border: none;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.admin label {
+    float: none;
+    clear: none;
+    width: auto;
+    margin: 10px;
+}
+

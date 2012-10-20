@@ -27,6 +27,9 @@ body {
 	width: 0;
 	height: 0;
 }
+.w100p {
+	width: 100%;
+}
 .w140 {
 	width: 140px;
 }
@@ -79,4 +82,10 @@ body {
 }
 .holder .zero_margR {
 	margin-right: 0;
+}
+.margin_top_10 {
+	margin-top: 10px;
+}
+.margin-bottom_10 {
+	margin-bottom: 10px;
 }
