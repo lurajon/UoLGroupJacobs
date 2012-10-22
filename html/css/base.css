@@ -6,7 +6,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	height: 30px;
 	color: #FFF;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -25,6 +25,9 @@ h2 {
 }
 h3 {
 	background-color: #1A2E88;
+}
+h4 {
+	background-color: #12ACED;
 }
 p {
 	border: 0;
