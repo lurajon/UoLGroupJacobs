@@ -85,6 +85,12 @@
 	background-position: left top;
 	cursor: pointer;
 }
+.image_slider.services {
+	background-image: url(../images/guest_slider/guestservices.jpg);
+}
+.image_slider.business {
+	background-image: url(../images/bus_slider/bus1.png);
+}
 .slider_big {
 	background-image: url(../images/main_slider/levni-hotel-image-gallery-3-b.jpg);
 }
