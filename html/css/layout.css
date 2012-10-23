@@ -27,6 +27,9 @@ body {
 	width: 0;
 	height: 0;
 }
+.w100p {
+	width: 100%;
+}
 .w140 {
 	width: 140px;
 }
@@ -66,6 +69,30 @@ body {
 .pad_left_800 {
 	padding-left: 800px;
 }
+.marg_top_5 {
+	margin-top: 5px;
+}
+.marg_bottom_5 {
+	margin-bottom: 5px;
+}
+.marg_top_10 {
+	margin-top: 10px;
+}
+.marg_bottom_10 {
+	margin-bottom: 10px;
+}
+.marg_top_20 {
+	margin-top: 20px;
+}
+.marg_bottom_20 {
+	margin-bottom: 20px;
+}
+.marg_left_10 {
+	margin-left: 10px;
+}
+.marg_right_10 {
+	margin-right: 10px;
+}
 .bar_right {
 	position: relative;
 	left: 640px;
@@ -79,4 +106,17 @@ body {
 }
 .holder .zero_margR {
 	margin-right: 0;
+}
+
+.margin_top_10 {
+	margin-top: 10px;
+}
+.margin-bottom_10 {
+	margin-bottom: 10px;
+}
+.float_left {
+	float:left;
+}
+.float_right {
+	float:right;
 }

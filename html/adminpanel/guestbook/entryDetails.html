@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Welcome to UoL Hotel</title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
+<link href="../../css/admin-styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="admin">
+<div class="holder">
+  <div class="w140 pad_left_800">
+    <div class="member_entry">Admnistration</div>
+  </div>
+  <div class="clear"></div>
+  <div class="w460">
+    <div class="site_logo"> HOTEL </div>
+  </div>
+  <div class="clear pad_bot_10"></div>
+  <div class="w940">
+    <div class="menu_holder">
+      <div class="menu_main">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../user/users.html">User Management</a></li>
+          <li><a href="../reservations/reservations.html">Reservations</a></li>
+          <li><a href="guestbook.html">Guestbook Management</a></li>
+          <li><a href="../../index.html">Back to Hotel Site</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="clear pad_bot_10"></div>
+   <!-- Content -->
+  <div class="w940">
+    
+    <div class="header_holder margin_top_10">
+      <!-- JL: enter your content header within <h1> element -->
+        <h1>Details</h1>
+       <!-- // JL -->
+      </div>
+      <!-- JL: please use space below to add your page contents -->
+      <form action="entryDetails.html">
+        <input type="hidden" value="{entry.entryId}" name="entryId" />
+        <table id="details" class="w100p margin_top_10">
+            <tbody>
+                <tr>
+                  <td colspan="5">{entry.status}</td>
+                </tr>
+                <tr>
+                  <td>Title</td>
+                  <td colspan="4">{entry.title}</td>
+               </tr>
+                <tr>
+                    <td>Posted By</td>
+                    <td>{entry.postedBy}</td>
+                    <td></td>
+                    <td>Posted Date</td>
+                    <td>{entry.postedDate}</td>
+                </tr>
+               <tr>
+                <td colspan="5">{entry.text}</td>
+               </tr>
+            </tbody>
+        </table>
+        <div class="margin_top_10">
+          <!-- only visible when the status of the entry allows the entry to be posted -->
+          <input type="submit" name="post" value="Post" />
+          <input type="submit" name="delete" value="Delete" />
+        </div>
+      <!-- //JL -->
+      </form>
+    </div>
+  
+  <div class="clear pad_bot_20"></div>
+  <div class="w940">
+    <div class="footer pad_top_10">
+      <div class="copyright">&copy; University of Liverpool Hotel</div>
+      <div class="footer_contact">UoL Hotel, Street Address, City<br />
+        t. +44 (0) 151 xxx xxxx | e. <a href="mailto:enquiries@uolhotel.com">enquiries@uolhotel.com</a></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
