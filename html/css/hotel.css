@@ -91,6 +91,9 @@
 .image_slider.business {
 	background-image: url(../images/bus_slider/bus1.png);
 }
+.image_slider.internet {
+	background-image: url(../images/internet_slider/internet2.jpg);
+}
 .slider_big {
 	background-image: url(../images/main_slider/levni-hotel-image-gallery-3-b.jpg);
 }
