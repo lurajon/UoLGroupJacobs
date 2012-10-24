@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- ZM: please do not forget to change page title -->
-<title>UoL Hotel : Internet facilities</title>
+<title>UoL Hotel - Available rooms</title>
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -38,8 +39,19 @@
   <div class="clear pad_bot_10"></div>
   <div class="w300 bar_right">
     <div class="w300 zero_margL">
-      <div class="confroom_link" style="background-image:url(images/Luxury-Contemporary-Hospitality-Interior-Design-of-Treasure-Island-Las-Vegas-Single-Bedroom-300x200.jpg)" onclick="location.href='singlebed.html'">
-        <div class="img_overlay overlay_color1">Single Bed Rooms</div>
+      <div class="booking_form_small">
+        <div class="header_holder booking">
+          <h3>Your booking</h3>
+        </div>
+        <div>
+          {dynamic AJAX updated price information and checkout}
+        </div>
+      </div>
+    </div>
+    <div class="clear pad_bot_5"></div>
+    <div class="w300 zero_margL">
+      <div class="confroom_link" onclick="location.href='confrooms.html'">
+        <div class="img_overlay overlay_color1">Your events in our Conference Rooms</div>
       </div>
     </div>
     <div class="clear pad_bot_20"></div>
@@ -70,30 +82,47 @@
   </div>
   <div class="w620 bar_left">
     <div class="w620 zero_margL">
-      <div class="image_slider internet" onclick="location.href='internet.html'">
-        <div class="img_overlay large_color1">Internet facilities</div>
+      <div class="header_holder">
+      <!-- ZM: enter your content header within <h1> element -->
+        <h1>Available rooms</h1>
+       <!-- // ZM -->
       </div>
-    </div>
-    <div class="clear pad_bot_20"></div>
-    <div class="w620 zero_margL">
-      <div class="header_holder"> 
+      <div>
+        <!-- this content will be a dynamic result based on the users selection -->
+        {dynamic Content based on users selections and availability}
+      </div>
+       <div class="header_holder"> 
         <!-- ZM: enter your content header within <h1> element -->
-        <h1>Internet Facilities</h1>
+        <h1>Personal Details</h1>
         <!-- // ZM --> 
       </div>
-      <!-- ZM: please use space below to add your page contents -->
-      <p>High-Speed Internet Access, powered by Cisco Systems – All of our hotels are outfitted with broadband connectivity enabling Virtual Private Network (VPN) capabilities as well as wireless Internet access in all of our meeting rooms and public spaces, such as lobbies and lounges.<br />
-        High-Speed Internet Access is complimentary for graduating students of University of Liverpool.</p>
-      <p>&nbsp;</p>
-      <p>Business Internet services includes:</p>
-      <p>&nbsp;</p>
-      <div class="listing">
-        <ul>
-          <li>24/7 technology help desk: No matter the time of day or night, staff at the help desk are ready to solve your technology-related problems. </li>
-        </ul>
-      </div>
-      
-      <!-- //ZM --> 
+      <form id="confroom_reservation" action="conf_confirmation.html" method="get" class="reservation_form">
+      <!-- ZM: GET method used temporarely as server limits use of POST when submiting form to static HTML -->
+        <fieldset>
+          <legend class="hidden">Please enter required information</legend>
+          <label for="customer_name">Name:</label>
+          <input name="customer_name" type="text" id="customer_name" value="" class="date_range"/>
+          <label for="customer_mail">Email:</label>
+          <input name="customer_mail" type="text" id="customer_mail" value="" class="date_range"/>
+          <label for="customer_company">Company:</label>
+          <input name="customer_company" type="text" id="customer_company" value="" class="date_range"/>
+          <label for="room_size">Conference Room:</label>
+          <select id="room_size" class="small_form_select">
+            <option value="1" selected="selected">Medium</option>
+            <option value="2">Grand</option>
+          </select>
+          <label for="conf_date">Requested Date:</label>
+          <input name="conf_date" type="text" id="conf_date" value="" class="date_range"/>
+          <label for="conf_start">Start Time:</label>
+          <input name="conf_start" type="text" id="conf_start" value="" class="date_range" />
+          <label for="conf_end">End Time:</label>
+          <input name="conf_end" type="text" id="conf_end" value="" class="date_range" />
+          <label for="customer_message">Message:</label>
+          <textarea name="customer_message" cols="37" rows="6" id="customer_message"></textarea>
+          <label for="reservation_check"></label>
+          <input id="reservation_check" type="submit" name="reservation_check" value="Check Availability" class="date_range marg_top_10" />
+        </fieldset>
+      </form>
     </div>
   </div>
   <div class="clear pad_bot_20"></div>
