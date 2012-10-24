@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- ZM: please do not forget to change page title -->
-<title>UoL Hotel Standard Page Template</title>
+<title>UoL Hotel - Contact Us</title>
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -101,25 +101,32 @@
   </div>
   <div class="w620 bar_left">
     <div class="w620 zero_margL">
-      <div class="image_slider" onclick="location.href='guestrooms.html'">
-        <div class="img_overlay large_color1">Luxury Guest Rooms</div>
+      <div class="image_slider" style="background-image: url(images/contactus.png)">
+        <div class="img_overlay large_color1">Need to get in touch with us?</div>
       </div>
     </div>
     <div class="clear pad_bot_20"></div>
     <div class="w620 zero_margL">
       <div class="header_holder">
       <!-- ZM: enter your content header within <h1> element -->
-        <h1>Welcome to your home away from Home!</h1>
+        <h1>Contact us</h1>
        <!-- // ZM -->
       </div>
-      <!-- ZM: please use space below to add your page contents -->
-      <p>UoL Hotel is a University of Liverpool owned and managed off-campus hotel built with primary intent for providing boarding, temporary residence, for visiting alumni and students.
-        Today it provides full range of services from simple bed and breakfast to organisation of 
-        small-scale conferences and events for its guests regardless to their affiliation to the UOL.</p>
-      <p>Affordable prices and services offered make it a quite popular hotel choice amongst Liverpool visitors as well as UOL alumni and students.</p>
-      <p>Hotel provides for 4 Single Bed rooms and 4 Double Bed rooms as well as 2 Conference rooms: Conference Grand accepting up to 100 participants and Conference Medium accepting up to 40 participants.</p>
-      <p>The modern UoL Hotel offers wide array of services and amenities, ranging from spacious guestrooms to delicious on-site dining options. The art of blending modern luxury and impeccable service with a premier setting has been perfected at the incredible hotel set.</p>
-      <!-- //ZM -->
+      <p>Please fill out the form below to contact us.</p>
+          <form action="#" method="post">
+            <!-- AJAX to give confirmation message back to this page -->
+	  	 <div class="name_contact"><label>Name:</label><input type="text" /></div>
+		 <div class="mail_contact"><label>E-mail:</label><input type="text" /></div>
+		 <div><label>Comments: </label></div>
+		 <div class="clear"> </div>
+		 <div>
+		 <textarea name="comment" rows="10" cols="30"></textarea>
+		</div>
+		<div>
+			<input type = "submit" value = "Submit" />
+			<input type = "reset" value = "Clear" />
+		</div>
+	</form>
     </div>
   </div>
   <div class="clear pad_bot_20"></div>
