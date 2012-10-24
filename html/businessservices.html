@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- ZM: please do not forget to change page title -->
@@ -42,25 +43,27 @@
         <div class="header_holder booking">
           <h3>OnLine Reservations</h3>
         </div>
-        <form action="#" method="post" name="availability_check">
-          <label>Arrival:</label>
-          <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
-          <label>Departure:</label>
-          <input name="depart_date" type="text" id="depart_date" value="" class="date_range" />
-          <label>Room Type:</label>
-          <select id="room_type" class="small_form_select">
-            <option value="1" selected="selected">Guest Room</option>
-            <option value="2">Conference Room</option>
-          </select>
-          <label>Room Size:</label>
-          <select id="room_size" class="small_form_select">
-            <option value="1" selected="selected">Single Bed</option>
-            <option value="2">Double Bed</option>
-            <option value="3">Conference Grand</option>
-            <option value="4">Conference Medium</option>
-          </select>
-          <label></label>
-          <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
+        <form action="#" method="post" id="availability_check">
+          <fieldset>
+            <label>Arrival:</label>
+            <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
+            <label>Departure:</label>
+            <input name="depart_date" type="text" id="depart_date" value="" class="date_range" />
+            <label>Room Type:</label>
+            <select id="room_type" class="small_form_select">
+              <option value="1" selected="selected">Guest Room</option>
+              <option value="2">Conference Room</option>
+            </select>
+            <label>Room Size:</label>
+            <select id="room_size" class="small_form_select">
+              <option value="1" selected="selected">Single Bed</option>
+              <option value="2">Double Bed</option>
+              <option value="3">Conference Grand</option>
+              <option value="4">Conference Medium</option>
+            </select>
+            <label></label>
+            <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
+          </fieldset>
         </form>
       </div>
     </div>
@@ -110,22 +113,21 @@
        <!-- // ZM -->
       </div>
       <!-- ZM: please use space below to add your page contents -->
-      <p>Staying at a UoL hotel should never limit your productivity during your business tripes.  
-	  Here the UoL Hotel, we provide the business traveller and students 
-	  with a variety of services to meet their business and educational requirements.
-	  </p>
-	  <p> business services</p>
-	  <br />
-	  <p> Services include:</p>
+      <p>Staying at a UoL hotel should never limit your productivity during your business trips. Here the UoL Hotel, we provide the business traveller and students with a variety of services to meet their business and educational requirements.</p>
+	<p>&nbsp;</p>
+	  <p>Services include:</p>
+      <p>&nbsp;</p>
+       <div class="listing float_left">
 	  	<ul>
 			<li>Meeting and conference rooms</li>
 			<li>Audio and video conferencing</li>
 			<li>Free wireless internet access</li>
 			<li>Printing and photocopy services</li>
-			<li>Fax services that include free outgoing fax</p>
+			<li>Fax services that include free outgoing fax</li>
 			<li>complimentary newspaper</li>
 			<li>complimentary parking available</li>	
 		</ul>  
+        </div>
       <!-- //ZM -->
     </div>
   </div>
