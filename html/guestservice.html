@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -7,6 +7,7 @@
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -42,7 +43,8 @@
         <div class="header_holder booking">
           <h3>OnLine Reservations</h3>
         </div>
-        <form action="#" method="post" name="availability_check">
+        <form action="#" method="post" id="availability_check">
+        <fieldset>
           <label>Arrival:</label>
           <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
           <label>Departure:</label>
@@ -61,6 +63,7 @@
           </select>
           <label></label>
           <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
+          </fieldset>
         </form>
       </div>
     </div>
@@ -120,22 +123,24 @@
 	  </p>
 	  <br />
 	  <p>
-		Visit our business and other services for a complete detailed informaition and booking
-			<ul>
-				<li> <a href = "businessservices.html"> Business Services </a></li>
+		Visit our business and other services for a complete detailed informaition and booking			</p>
+	  <ul>
+		  <li> <a href = "businessservices.html"> Business Services </a></li>
 				<li> <a href = "internetaccess.html"> Internet </a></li>
 				<li> <a href = "parking.html"> Parking </a></li>
 			</ul>	
 		</p>	
 	  <br />
-	  <p> guest services & amenities </p>
+	  <p> guest services &amp; amenities </p>
 		<ul>
 			<li>complimentary 24-hour on-site fitness center with Life Fitness trainer available</li>
 			<li>indoor heated pool</li>
 			<li>free shuttle bus service available to and from airports to the hotel</li>
 			<li>free limited Wi-Fi internet access that include computing and printing services</p>
-			<li>catering avaialable for your meeting events and party</>
+			</li>
+			<li>catering avaialable for your meeting events and party&lt;/&gt;			</li>
 			<li>complimentary parking available</p>
+		</li>
 		</ul>
 		<!-- //ZM -->
     </div>
