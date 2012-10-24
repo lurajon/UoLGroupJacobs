@@ -255,3 +255,6 @@ label {
 .nopointer {
 	cursor: default;
 }
+#availability_check fieldset {
+	border:none;
+}
