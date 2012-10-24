@@ -252,3 +252,6 @@ label {
 	width: 300px;
 	margin-top: -10px;
 }
+.nopointer {
+	cursor: default;
+}
