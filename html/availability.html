@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- ZM: please do not forget to change page title -->
+<title>UoL Hotel - Available rooms</title>
+<!-- //ZM -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="holder">
+  <div class="w140 pad_left_800">
+    <div class="member_entry"><a href="./adminpanel">Staff Only</a></div>
+  </div>
+  <div class="clear"></div>
+  <div class="w460">
+    <div class="site_logo"> HOTEL </div>
+  </div>
+  <div class="clear pad_bot_10"></div>
+  <div class="w940">
+    <div class="menu_holder">
+      <div class="menu_main">
+        <ul>
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="guestservice.html">Guest Services</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="guestrooms.html">Guest Rooms</a></li>
+          <li><a href="confrooms.html">Conference Rooms</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="guestbook.html">Guestbook</a></li>
+          <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="clear pad_bot_10"></div>
+  <div class="w300 bar_right">
+    <div class="w300 zero_margL">
+      <div class="booking_form_small">
+        <div class="header_holder booking">
+          <h3>Your booking</h3>
+        </div>
+        <div>
+          {dynamic AJAX updated price information and checkout}
+        </div>
+      </div>
+    </div>
+    <div class="clear pad_bot_5"></div>
+    <div class="w300 zero_margL">
+      <div class="confroom_link" onclick="location.href='confrooms.html'">
+        <div class="img_overlay overlay_color1">Your events in our Conference Rooms</div>
+      </div>
+    </div>
+    <div class="clear pad_bot_20"></div>
+    <div class="w300 zero_margL">
+      <div class="socnet_link">
+        <ul>
+          <li class="facebook"><a href="">Visit Hotel's Facebook Page</a></li>
+          <li class="twitter"><a href="">Follow us on Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="w300 zero_margL">
+      <div class="uol_link">
+        <div class="menu_holder">
+          <h2>University of Liverpool</h2>
+        </div>
+        <ul>
+          <li><a href="http://www.liv.ac.uk/about/">About UoL</a></li>
+          <li><a href="http://www.liv.ac.uk/study/">Study</a></li>
+          <li><a href="http://www.liv.ac.uk/departments/">Departments and Services</a></li>
+          <li><a href="http://www.liv.ac.uk/study/openday/">Open Days</a></li>
+          <li><a href="http://www.liv.ac.uk/liverpool-life/">Liverpool Life</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="w620 bar_left">
+    <div class="w620 zero_margL">
+      <div class="header_holder">
+      <!-- ZM: enter your content header within <h1> element -->
+        <h1>Available rooms</h1>
+       <!-- // ZM -->
+      </div>
+      <div>
+        <!-- this content will be a dynamic result based on the users selection -->
+        {dynamic Content based on users selections and availability}
+      </div>
+       <div class="header_holder"> 
+        <!-- ZM: enter your content header within <h1> element -->
+        <h1>Personal Details</h1>
+        <!-- // ZM --> 
+      </div>
+      <form id="confroom_reservation" action="conf_confirmation.html" method="get" class="reservation_form">
+      <!-- ZM: GET method used temporarely as server limits use of POST when submiting form to static HTML -->
+        <fieldset>
+          <legend class="hidden">Please enter required information</legend>
+          <label for="customer_name">Name:</label>
+          <input name="customer_name" type="text" id="customer_name" value="" class="date_range"/>
+          <label for="customer_mail">Email:</label>
+          <input name="customer_mail" type="text" id="customer_mail" value="" class="date_range"/>
+          <label for="customer_company">Company:</label>
+          <input name="customer_company" type="text" id="customer_company" value="" class="date_range"/>
+          <label for="room_size">Conference Room:</label>
+          <select id="room_size" class="small_form_select">
+            <option value="1" selected="selected">Medium</option>
+            <option value="2">Grand</option>
+          </select>
+          <label for="conf_date">Requested Date:</label>
+          <input name="conf_date" type="text" id="conf_date" value="" class="date_range"/>
+          <label for="conf_start">Start Time:</label>
+          <input name="conf_start" type="text" id="conf_start" value="" class="date_range" />
+          <label for="conf_end">End Time:</label>
+          <input name="conf_end" type="text" id="conf_end" value="" class="date_range" />
+          <label for="customer_message">Message:</label>
+          <textarea name="customer_message" cols="37" rows="6" id="customer_message"></textarea>
+          <label for="reservation_check"></label>
+          <input id="reservation_check" type="submit" name="reservation_check" value="Check Availability" class="date_range marg_top_10" />
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="clear pad_bot_20"></div>
+  <div class="w940">
+    <div class="footer pad_top_10">
+      <div class="copyright">&copy; University of Liverpool Hotel</div>
+      <div class="footer_contact">UoL Hotel, Street Address, City<br />
+        t. +44 (0) 151 xxx xxxx | e. <a href="mailto:enquiries@uolhotel.com">enquiries@uolhotel.com</a></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
