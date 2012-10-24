@@ -82,7 +82,8 @@
         <!-- // ZM --> 
       </div>
       <!-- ZM: please use space below to add your page contents -->
-      <form id="confroom_reservation" action="conf_confirmation.html" method="post" class="reservation_form">
+      <form id="confroom_reservation" action="conf_confirmation.html" method="get" class="reservation_form">
+      <!-- ZM: GET method used temporarely as server limits use of POST when submiting form to static HTML -->
         <fieldset>
           <legend class="hidden">Please enter required information</legend>
           <label for="customer_name">Name:</label>
