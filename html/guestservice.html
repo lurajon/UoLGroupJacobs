@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- ZM: please do not forget to change page title -->
@@ -42,7 +43,8 @@
         <div class="header_holder booking">
           <h3>OnLine Reservations</h3>
         </div>
-        <form action="#" method="post" name="availability_check">
+        <form action="#" method="post">
+          <div>
           <label>Arrival:</label>
           <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
           <label>Departure:</label>
@@ -61,6 +63,7 @@
           </select>
           <label></label>
           <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
+          </div>
         </form>
       </div>
     </div>
