@@ -7,9 +7,10 @@
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/image_slider.js"></script>
 </head>
 
-<body>
+<body onload="image_slider();">
 <div class="holder">
   <div class="w140 pad_left_800">
     <div class="member_entry"><a href="./adminpanel">Staff Only</a></div>
@@ -70,8 +71,10 @@
   </div>
   <div class="w620 bar_left">
     <div class="w620 zero_margL">
-      <div class="image_slider" style="background-image: url(images/seasons-conference.jpg)" onclick="location.href='confrooms.html'">
-        <div class="img_overlay large_color1">Host your events in our Conference Rooms</div>
+      <div id="big_slider_holder" class="image_slider">
+        <div id="big_slider_text" class="img_overlay large_color1">&nbsp;</div>
+        <!--<div class="image_slider" style="background-image: url(images/seasons-conference.jpg)" onclick="location.href='confrooms.html'">
+        <div class="img_overlay large_color1">Host your events in our Conference Rooms</div> --> 
       </div>
     </div>
     <div class="clear pad_bot_20"></div>
