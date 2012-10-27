@@ -8,9 +8,10 @@
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/image_slider.js"></script>
 </head>
 
-<body>
+<body onload="image_slider();">
 <div class="holder">
   <div class="w140 pad_left_800">
     <div class="member_entry"><a href="./adminpanel">Staff Only</a></div>
@@ -45,24 +46,24 @@
         </div>
         <form action="#" method="post">
           <div>
-          <label>Arrival:</label>
-          <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
-          <label>Departure:</label>
-          <input name="depart_date" type="text" id="depart_date" value="" class="date_range" />
-          <label>Room Type:</label>
-          <select id="room_type" class="small_form_select">
-            <option value="1" selected="selected">Guest Room</option>
-            <option value="2">Conference Room</option>
-          </select>
-          <label>Room Size:</label>
-          <select id="room_size" class="small_form_select">
-            <option value="1" selected="selected">Single Bed</option>
-            <option value="2">Double Bed</option>
-            <option value="3">Conference Grand</option>
-            <option value="4">Conference Medium</option>
-          </select>
-          <label></label>
-          <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
+            <label>Arrival:</label>
+            <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
+            <label>Departure:</label>
+            <input name="depart_date" type="text" id="depart_date" value="" class="date_range" />
+            <label>Room Type:</label>
+            <select id="room_type" class="small_form_select">
+              <option value="1" selected="selected">Guest Room</option>
+              <option value="2">Conference Room</option>
+            </select>
+            <label>Room Size:</label>
+            <select id="room_size" class="small_form_select">
+              <option value="1" selected="selected">Single Bed</option>
+              <option value="2">Double Bed</option>
+              <option value="3">Conference Grand</option>
+              <option value="4">Conference Medium</option>
+            </select>
+            <label></label>
+            <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
           </div>
         </form>
       </div>
@@ -101,32 +102,42 @@
   </div>
   <div class="w620 bar_left">
     <div class="w620 zero_margL">
-      <div class="image_slider" style="background-image: url(images/contactus.png)">
-        <div class="img_overlay large_color1">Need to get in touch with us?</div>
+      <div id="big_slider_holder" class="image_slider">
+        <div id="big_slider_text" class="img_overlay large_color1">&nbsp;</div>
+        <!--<div class="image_slider" style="background-image: url(images/contactus.png)">
+        <div class="img_overlay large_color1">Need to get in touch with us?</div> --> 
       </div>
     </div>
     <div class="clear pad_bot_20"></div>
     <div class="w620 zero_margL">
-      <div class="header_holder">
-      <!-- ZM: enter your content header within <h1> element -->
+      <div class="header_holder"> 
+        <!-- ZM: enter your content header within <h1> element -->
         <h1>Contact us</h1>
-       <!-- // ZM -->
+        <!-- // ZM --> 
       </div>
       <p>Please fill out the form below to contact us.</p>
-          <form action="#" method="post">
-            <!-- AJAX to give confirmation message back to this page -->
-	  	 <div class="name_contact"><label>Name:</label><input type="text" /></div>
-		 <div class="mail_contact"><label>E-mail:</label><input type="text" /></div>
-		 <div><label>Comments: </label></div>
-		 <div class="clear"> </div>
-		 <div>
-		 <textarea name="comment" rows="10" cols="30"></textarea>
-		</div>
-		<div>
-			<input type = "submit" value = "Submit" />
-			<input type = "reset" value = "Clear" />
-		</div>
-	</form>
+      <form action="#" method="post">
+        <!-- AJAX to give confirmation message back to this page -->
+        <div class="name_contact">
+          <label>Name:</label>
+          <input type="text" />
+        </div>
+        <div class="mail_contact">
+          <label>E-mail:</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label>Comments: </label>
+        </div>
+        <div class="clear"> </div>
+        <div>
+          <textarea name="comment" rows="10" cols="30"></textarea>
+        </div>
+        <div>
+          <input type = "submit" value = "Submit" />
+          <input type = "reset" value = "Clear" />
+        </div>
+      </form>
     </div>
   </div>
   <div class="clear pad_bot_20"></div>
