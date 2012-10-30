@@ -6,6 +6,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
+<script type="text/javascript" src="js/zm_form_validation.js"></script>
 </head>
 
 <body onload="image_slider('big');">
@@ -47,14 +48,16 @@
         <div class="header_holder booking">
           <h3>OnLine Reservations</h3>
         </div>
-        <form action="#" method="post" id="availability_check">
+        <form action="#" method="get" id="availability_check" onsubmit="return validateFormOnSubmit(this)">
           <fieldset>
+            <span id="arrive_date_error" class="required short"></span>
             <label>Arrival:</label>
-            <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
+            <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
+            <span id="depart_date_error" class="required short"></span>
             <label>Departure:</label>
-            <input name="depart_date" type="text" id="depart_date" value="" class="date_range" />
+            <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
             <label>Room Type:</label>
-            <select id="room_type" class="small_form_select">
+            <select id="room_type" class="small_form_select" onchange="sizeOptChange(this)">
               <option value="1" selected="selected">Guest Room</option>
               <option value="2">Conference Room</option>
             </select>
@@ -62,8 +65,6 @@
             <select id="room_size" class="small_form_select">
               <option value="1" selected="selected">Single Bed</option>
               <option value="2">Double Bed</option>
-              <option value="3">Conference Grand</option>
-              <option value="4">Conference Medium</option>
             </select>
             <label></label>
             <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />

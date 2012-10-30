@@ -16,6 +16,11 @@ function validateFormOnSubmit(whichForm) {
 		errorCounter += validateTime(whichForm.conf_end);
 		if (errorCounter === 0) errorCounter += validateTimeDiff(whichForm.conf_start, whichForm.conf_end);
 	}
+	if (whichForm.id == "availability_check") {
+		errorCounter += validateDate(whichForm.arrive_date);
+		errorCounter += validateDate(whichForm.depart_date);
+		if (errorCounter === 0) errorCounter += validateDateDiff(whichForm.arrive_date, whichForm.depart_date);
+	}
 	if (errorCounter != 0) {
 		return false;
 	} else return true;
@@ -48,7 +53,7 @@ function validateEmail(box) {
 }
 
 function validateDate(box) {
-	if (validateIsEmpty(box)) {
+	if (validateIsEmpty(box) || box.value == "dd/mm/yyyy") {
 		errorOn(box, "Required field!");
 		return 1;
 	} else {
@@ -152,4 +157,38 @@ function errorOff(box) {
 	errLabel.textContent = "";
 	errLabel.style.visibility = 'hidden';
 	box.style.background = 'white';
+}
+
+function delIntContent(box) {
+	if (box.value == "dd/mm/yyyy") {
+		box.value = "";
+	}
+}
+
+function intContent(box) {
+	if (box.value == "") {
+		box.value = "dd/mm/yyyy";
+	}
+}
+
+function sizeOptChange(box) {
+	var boxChange = document.getElementById('room_size');
+	boxChange.options.length = 0;
+	var objectsA = {
+		1: 'Single Bed',
+		2: 'Double Bed'
+	};
+	var objectsB = {
+		3: 'Conference Grand',
+		4: 'Conference Medium'
+	};
+	if (box.selectedIndex == 1) {
+		for (index in objectsB) {
+			boxChange.options[boxChange.options.length] = new Option(objectsB[index], index);
+		}
+	} else {
+		for (index in objectsA) {
+			boxChange.options[boxChange.options.length] = new Option(objectsA[index], index);
+		}
+	}
 }

@@ -266,6 +266,10 @@ label {
 	color: red;
 	margin-left:160px;
 }
+.required.short {
+	font-size: 0.8em;
+	margin-left: 80px !important;
+}
 .date_format {
 	float:left;
 	padding-left: 10px;
