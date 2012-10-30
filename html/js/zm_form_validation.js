@@ -69,8 +69,14 @@ function validateDate(box) {
 				errorOn(box, "Invalid Date detected! Please correct.");
 				return 1;
 			} else {
-				errorOff(box);
-				return 0;
+				var todayDate = new Date();
+				if (todayDate >= dateChecker) {
+					errorOn(box, "Reservations are unavailabe on or before current date!");
+					return 1;
+				} else {
+					errorOff(box);
+					return 0;
+				}
 			}
 		}
 	}
