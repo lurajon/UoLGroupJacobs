@@ -8,6 +8,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
+<script type="text/javascript" src="js/zm_form_validation.js"></script>
 </head>
 
 <body onload="image_slider();">
@@ -85,13 +86,15 @@
         <!-- // ZM --> 
       </div>
       <!-- ZM: please use space below to add your page contents -->
-      <form id="confroom_reservation" action="conf_confirmation.html" method="get" class="reservation_form">
+      <form id="confroom_reservation" action="conf_confirmation.html" method="get" class="reservation_form" onsubmit="return validateFormOnSubmit(this)">
         <!-- ZM: GET method used temporarely as server limits use of POST when submiting form to static HTML -->
         <fieldset>
           <legend class="hidden">Please enter required information</legend>
-          <label for="customer_name">Name:</label>
+          <span id="customer_name_error" class="required"></span>
+          <label for="customer_name">* Name:</label>
           <input name="customer_name" type="text" id="customer_name" value="" class="date_range"/>
-          <label for="customer_mail">Email:</label>
+          <span id="customer_mail_error" class="required"></span>
+          <label for="customer_mail">* Email:</label>
           <input name="customer_mail" type="text" id="customer_mail" value="" class="date_range"/>
           <label for="customer_company">Company:</label>
           <input name="customer_company" type="text" id="customer_company" value="" class="date_range"/>
@@ -100,12 +103,16 @@
             <option value="1" selected="selected">Medium</option>
             <option value="2">Grand</option>
           </select>
-          <label for="conf_date">Requested Date:</label>
+          <span id="conf_date_error" class="required"></span>
+          <label for="conf_date">* Requested Date:</label>
           <input name="conf_date" type="text" id="conf_date" value="" class="date_range"/>
-          <label for="conf_start">Start Time:</label>
+          <span class="date_format">(dd/mm/yyyy)</span> <span id="conf_start_error" class="required"></span>
+          <label for="conf_start">* Start Time:</label>
           <input name="conf_start" type="text" id="conf_start" value="" class="date_range" />
-          <label for="conf_end">End Time:</label>
+          <span class="date_format">24 hour (hh:mm)</span> <span id="conf_end_error" class="required"></span>
+          <label for="conf_end">* End Time:</label>
           <input name="conf_end" type="text" id="conf_end" value="" class="date_range" />
+          <span class="date_format">24 hour (hh:mm)</span>
           <label for="customer_message">Message:</label>
           <textarea name="customer_message" cols="37" rows="6" id="customer_message"></textarea>
           <label for="reservation_check"></label>

@@ -333,3 +333,21 @@ label {
 	background: #eb2133;
 	color: #FFFFFF;	
 }
+.required {
+	float: left;
+	clear: left;
+	visibility:hidden;
+	font-size: 0.9em;
+	color: red;
+	margin-left:160px;
+}
+.required.short {
+	font-size: 0.8em;
+	margin-left: 80px !important;
+}
+.date_format {
+	float:left;
+	padding-left: 10px;
+	font-size: 0.9em;
+	color:#CCC;
+}
