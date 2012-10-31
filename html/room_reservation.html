@@ -8,6 +8,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
+<script type="text/javascript" src="js/zm_form_validation.js"></script>
 </head>
 
 <body onload="image_slider();">
@@ -85,18 +86,24 @@
         <!-- // ZM --> 
       </div>
       <!-- ZM: please use space below to add your page contents -->
-      <form id="room_reservation" action="room_confirmation.html" method="get" class="reservation_form">
+      <form id="room_reservation" action="room_confirmation.html" method="get" class="reservation_form" onsubmit="return validateFormOnSubmit(this)">
         <!-- ZM: GET method used temporarely as server limits use of POST when submiting form to static HTML -->
         <fieldset>
           <legend class="hidden">Please enter required information</legend>
-          <label for="customer_name">Name:</label>
+          <span id="customer_name_error" class="required"></span>
+          <label for="customer_name">* Name:</label>
           <input name="customer_name" type="text" id="customer_name" value="" class="date_range"/>
-          <label for="customer_mail">Email:</label>
+          <span id="customer_mail_error" class="required"></span>
+          <label for="customer_mail">* Email:</label>
           <input name="customer_mail" type="text" id="customer_mail" value="" class="date_range"/>
-          <label for="arrive_date">Date of Arrival:</label>
+          <span id="arrive_date_error" class="required"></span>
+          <label for="arrive_date">* Date of Arrival:</label>
           <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
-          <label for="depart_date">Date of Departure:</label>
-          <input name="depart_date" type="text" id="depart_date" value="" class="date_range" />
+          <span class="date_format">(dd/mm/yyyy)</span>
+          <span id="depart_date_error" class="required"></span>
+          <label for="depart_date">* Date of Departure:</label>
+          <input name="depart_date" type="text" id="depart_date" value="" class="date_range"/>
+          <span class="date_format">(dd/mm/yyyy)</span>
           <label for="room_size">Room Size:</label>
           <select id="room_size" class="small_form_select">
             <option value="1" selected="selected">Single Bed</option>
@@ -108,7 +115,6 @@
           <input id="reservation_check" type="submit" name="reservation_check" value="Check Availability" class="date_range marg_top_10" />
         </fieldset>
       </form>
-      
       <!-- //ZM --> 
     </div>
   </div>
