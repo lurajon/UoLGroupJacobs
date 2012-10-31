@@ -45,14 +45,16 @@
         <div class="header_holder booking">
           <h3>OnLine Reservations</h3>
         </div>
-        <form action="#" method="post">
-          <div>
+        <form action="availability.html" method="get" id="availability_check" onsubmit="return validateFormOnSubmit(this)">
+          <fieldset>
+            <span id="arrive_date_error" class="required short"></span>
             <label>Arrival:</label>
-            <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
+            <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
+            <span id="depart_date_error" class="required short"></span>
             <label>Departure:</label>
-            <input name="depart_date" type="text" id="depart_date" value="" class="date_range" />
+            <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
             <label>Room Type:</label>
-            <select id="room_type" class="small_form_select">
+            <select id="room_type" class="small_form_select" onchange="sizeOptChange(this)">
               <option value="1" selected="selected">Guest Room</option>
               <option value="2">Conference Room</option>
             </select>
@@ -60,12 +62,10 @@
             <select id="room_size" class="small_form_select">
               <option value="1" selected="selected">Single Bed</option>
               <option value="2">Double Bed</option>
-              <option value="3">Conference Grand</option>
-              <option value="4">Conference Medium</option>
             </select>
             <label></label>
             <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
-          </div>
+          </fieldset>
         </form>
       </div>
     </div>
@@ -139,30 +139,30 @@
           <div>
             <label for="gender" class="required-field">Gender:</label>
             <div>
-            <input type="radio" id="gender:male" name="gender" value="m" checked="checked" />
-            <label for="gender:male" class="radio">Male</label>
-            <input type="radio" id="gender:female" name="gender" value="f" />
-            <label for="gender:female" class="radio">Female</label>
+              <input type="radio" id="gender:male" name="gender" value="m" checked="checked" />
+              <label for="gender:male" class="radio">Male</label>
+              <input type="radio" id="gender:female" name="gender" value="f" />
+              <label for="gender:female" class="radio">Female</label>
             </div>
             <div class="clear"></div>
           </div>
           <div>
-            <label class="clear-width" class="required-field">Purpose of visit:</label>
+            <label class="clear-width" class="required-field">
+            Purpose of visit:
+            </label>
             <div class="clear"></div>
           </div>
-          <div>
-            <span id="purpose_error" class="required"></span>
-          </div>
+          <div> <span id="purpose_error" class="required"></span> </div>
           <div>
             <textarea id="purpose" name="purpose" cols="40" rows="10" class="w100p borderBox" onfocus="errorOff(this)"></textarea>
           </div>
           <div>
-            <label class="clear-width" class="required-field">Your comment:</label>
+            <label class="clear-width" class="required-field">
+            Your comment:
+            </label>
             <div class="clear"></div>
           </div>
-          <div>
-            <span id="comment_error" class="required"></span>
-          </div>
+          <div> <span id="comment_error" class="required"></span> </div>
           <div>
             <textarea id="comment" name="comment"  cols="40" rows="10" class="w100p borderBox" onfocus="errorOff(this)"></textarea>
           </div>
