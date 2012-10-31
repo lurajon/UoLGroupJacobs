@@ -9,6 +9,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
+<script type="text/javascript" src="js/form_validation.js"></script>
 </head>
 
 <body onload="image_slider();">
@@ -115,38 +116,59 @@
         <h1>Add a guestbook entry</h1>
         <!-- // ZM --> 
       </div>
-      <form action="guestbook_confirmation.html" method="get">
-        <div>
+      <form id="guestbook_form" action="#" method="get" onsubmit="validateFormOnSubmit(this)">
+        <div class="inner">
           <div>
-            <label>Name:</label>
-            <input type="text" value="" name="name" />
+            <label for="name" class="required-field">Name:</label>
+            <input type="text" value="" name="name" id="name" onfocus="errorOff(this)" />
+            <span id="name_error" class="required"></span>
+            <div class="clear"></div>
           </div>
           <div>
-            <label>E-mail:</label>
-            <input type="text" value="" name="email" />
+            <label for="email" class="required-field">E-mail:</label>
+            <input type="text" value="" name="email" id="email" onfocus="errorOff(this)" />
+            <span id="email_error" class="required"></span>
+            <div class="clear"></div>
           </div>
           <div>
-            <label>Age:</label>
-            <input type="text" value="" name="age" />
+            <label for="age" class="required-field">Age:</label>
+            <input type="text" value="" name="age" id="age" onfocus="errorOff(this)" />
+            <span id="age_error" class="required"></span>
+            <div class="clear"></div>
           </div>
           <div>
-            <label>Gender:</label>
-            <input type="radio" id="gender:male" value="m" />
-            <label for="gender:male">Male</label>
-            <input type="radio" id="gender:female" value="f" />
-            <label for="gender:female">Female</label>
+            <label for="gender" class="required-field">Gender:</label>
+            <div>
+            <input type="radio" id="gender:male" name="gender" value="m" checked="checked" />
+            <label for="gender:male" class="radio">Male</label>
+            <input type="radio" id="gender:female" name="gender" value="f" />
+            <label for="gender:female" class="radio">Female</label>
+            </div>
+            <div class="clear"></div>
           </div>
           <div>
-            <label>Purpose of visit:</label>
-            <textarea name="purpose" cols="40" rows="10"></textarea>
+            <label class="clear-width" class="required-field">Purpose of visit:</label>
+            <div class="clear"></div>
           </div>
           <div>
-            <label>Your comment:</label>
-            <textarea name="purpose" cols="40" rows="10"></textarea>
+            <span id="purpose_error" class="required"></span>
           </div>
           <div>
-            <input type = "submit" value = "Submit" />
-            <input type = "reset" value = "Clear" />
+            <textarea id="purpose" name="purpose" cols="40" rows="10" class="w100p borderBox" onfocus="errorOff(this)"></textarea>
+          </div>
+          <div>
+            <label class="clear-width" class="required-field">Your comment:</label>
+            <div class="clear"></div>
+          </div>
+          <div>
+            <span id="comment_error" class="required"></span>
+          </div>
+          <div>
+            <textarea id="comment" name="comment"  cols="40" rows="10" class="w100p borderBox" onfocus="errorOff(this)"></textarea>
+          </div>
+          <div>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Clear" />
           </div>
         </div>
       </form>

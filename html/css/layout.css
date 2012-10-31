@@ -120,3 +120,28 @@ body {
 .float_right {
 	float:right;
 }
+
+label.radio {
+	float:none;
+}
+
+label.clear-width {
+	width: auto;
+}
+
+input.error {
+	border-color: #eb2133;
+	background: #fbeff0;
+}
+
+#guestbook_form {}
+
+#guestbook_form .required {
+	clear:none;
+	float:none;
+	margin: 0;
+}
+
+form div.inner {
+    padding: 20px;
+}
