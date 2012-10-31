@@ -258,3 +258,78 @@ label {
 #availability_check fieldset {
 	border:none;
 }
+
+.ui-calendar {
+	background: #FFF;
+	border: 1px solid #DEDEDE;
+}
+
+.ui-calendar table {
+	border-spacing: 0;
+}
+
+.ui-calendar .nav-bar {
+	background: #0033CC;
+	color: #FFFFFF;
+}
+
+.ui-calendar .nav-bar td {
+	border:none;
+}
+
+.ui-calendar .nav-bar .ui-icon.prev-link {
+	
+	background-position: -96px -16px;
+}
+
+.ui-calendar .nav-bar .ui-icon.next-link {
+	
+	background-position: -32px -16px;
+}
+
+.ui-icon {
+	background: url(../images/icons/ui-icons_ffffff_256x240.png) no-repeat;
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.box-shadow {
+	-moz-box-shadow: 0 0 5px #DEDEDE;
+	-webkit-box-shadow: 0 0 5px #DEDEDE;
+	box-shadow: 0 0 5px #DEDEDE;
+}
+
+.ui-calendar-hdr {
+	font-size: 0.8em;
+}
+
+.ui-calendar-hdr th {
+    padding: 5px;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.ui-calendar tr td {
+	font-size: 0.8em;
+	padding: 4px;
+	text-align: center;
+}
+
+.ui-calendar tr td.disabled {
+	background: #F1F1F1;
+	color: #D1D1D1;
+}
+
+.ui-calendar tr td.choosenDay {
+	background: #DA0087;
+	color: #FFFFFF;
+}
+
+.ui-calendar tr td.toDay {
+	border: 1px solid #0033CC;
+}
+
+.ui-calendar tr td.normalDay.highlight {
+	background: #eb2133;
+	color: #FFFFFF;	
+}
