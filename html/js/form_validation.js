@@ -35,6 +35,17 @@ function validateFormOnSubmit(whichForm) {
 	} else return true;
 }
 
+/**
+ * Validate the guestbook form
+ */
+function validateGuestBookForm(form, errorCounter) {
+	errorCounter += validateName(form.name);
+	errorCounter += validateEmail(form.email);
+	errorCounter += validateAge(form.age);
+	errorCounter += validateName(form.purpose);
+	errorCounter += validateName(form.comment);
+}
+
 function validateName(box) {
 	if (validateIsEmpty(box)) {
 		errorOn(box, "Required field!");
@@ -136,6 +147,27 @@ function validateTimeDiff(timeA, timeB) {
 	}
 }
 
+function validateAge(box) {
+	var age = box.value;
+	
+	if (!age) {
+		errorOn(box, "Required Field!");
+		return 1;
+	}
+	
+	if (isNaN(parseInt(age))) {
+		errorOn(box, "The age must be an integer 15 or above");
+		return 1;
+	}
+	
+	if (age < 15) {
+		errorOn(box, "You are too young. You must be 15 years or older");
+		return 1;
+	}
+	
+	return 0;
+}
+
 function dateCreate(box) {
 	// we split input based on delimiter to day, month and year
 	var box_day = box.value.split("/")[0];
@@ -152,12 +184,21 @@ function validateIsEmpty(box) {
 	} else return false;
 }
 
+function validateDefault(box) {
+	if (validateIsEmpty(box)) {
+		return 1;
+	}
+	
+	return 0;
+}
+
 function errorOn(box, msg) {
 	var constructLabel = box.id + "_error";
 	var errLabel = document.getElementById(constructLabel);
 	errLabel.textContent = msg;
 	errLabel.style.visibility = 'visible';
-	box.style.background = 'yellow';
+	//box.style.background = 'yellow';
+	box.className = box.className + ' error';
 }
 
 function errorOff(box) {
@@ -165,7 +206,8 @@ function errorOff(box) {
 	var errLabel = document.getElementById(constructLabel);
 	errLabel.textContent = "";
 	errLabel.style.visibility = 'hidden';
-	box.style.background = 'white';
+	//box.style.background = 'white';
+	box.className = box.className.replace(' error', '');
 }
 
 function delIntContent(box) {
@@ -200,11 +242,4 @@ function sizeOptChange(box) {
 			boxChange.options[boxChange.options.length] = new Option(objectsA[index], index);
 		}
 	}
-}
-
-/**
- * Validate the guestbook form
- */
-function validateGuestBookForm(form, errorCounter) {
-	errorCounter += validateName(form.name);
 }
