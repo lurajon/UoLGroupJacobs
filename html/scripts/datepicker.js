@@ -22,11 +22,6 @@ var datePicker = {
         hideSelectTags : [],
         targetElement : null,
         
-        test : function() {
-            document.writeln("Test");
-        
-        },
-        
         // show the calendar
         showCalendar : function(element, targetId) {
             this.targetElement = document.getElementById(targetId);
@@ -38,13 +33,13 @@ var datePicker = {
 		}
             }
             
-            var positions = this.getParentOffset(element);
+            var positions = this.getOffset(this.targetElement);
             
             var calendarBody = document.createElement('div');
             calendarBody.setAttribute('id', 'calendar:popup');
             calendarBody.className = 'ui-calendar box-shadow';
-            calendarBody.style.left = positions[0]  + 'px';
-            calendarBody.style.top = positions[1]; + 'px';
+            calendarBody.style.left = positions.left  + 'px';
+            calendarBody.style.top = positions.top; + 'px';
             //calendarBody.style.backgroundColor = '#333333';
             calendarBody.style.display='block';
             calendarBody.style.position='absolute';
@@ -285,19 +280,17 @@ var datePicker = {
             }
         },
         
-        getParentOffset : function (element) {
-            var top = 0;
-            var left = 0;
-            
-            if (element.offsetParent) {
-                do {
-                    left += element.offsetLeft;
-		    top += element.offsetTop;
-                    
-                } while (element = element.offsetParent);
-            }
-            
-            return [left, top];
+        getOffset : function (element) {
+	        var x = 0;
+		var y = 0;
+	
+		
+		while( element && !isNaN( element.offsetLeft ) && !isNaN( element.offsetTop ) ) {
+		    x += element.offsetLeft - element.scrollLeft;
+		    y += element.offsetTop - element.scrollTop;
+		    element = element.offsetParent;
+		}
+		return { top: y, left: x };
         }
 }
 
