@@ -3,6 +3,7 @@ var todaysDate = new Date();
 
 var datePicker = {
      
+	// global variables for the datePicker
         curDay: curDate.getDate(),
         curMonth: curDate.getMonth(),
         curYear: (curDate.getYear() % 100) + (((curDate.getYear() % 100) < 39) ? 2000 : 1900),
@@ -22,7 +23,9 @@ var datePicker = {
         hideSelectTags : [],
         targetElement : null,
         
-        // show the calendar
+        /**
+	 * Show the calendar
+	 */
         showCalendar : function(element, targetId) {
             this.targetElement = document.getElementById(targetId);
             
@@ -58,6 +61,9 @@ var datePicker = {
 	
         },
         
+	/**
+	 * Update the content of the calendar when changing months
+	 */
         updateCalendar : function(monthNumber) {
            
             var calendarBodyElement = document.getElementById('calendar:popup');
@@ -68,6 +74,12 @@ var datePicker = {
            calendarBodyElement.appendChild(calendar);
         },
         
+	/**
+	 * Get the next month number
+	 *
+	 * If the next monthnumber exceeds a valid monthnumber, it starts at the first
+	 * month
+	 */
         getNextMonthNumber : function() {
             this.month++;
             if (this.month == 12) {
@@ -76,6 +88,12 @@ var datePicker = {
             }
         },
         
+	/**
+	 * Get the previous month number
+	 *
+	 * If the next month number is not a valid number, it returns the last month number (-1 = 11)
+	 * 
+	 */
         getPreviousMonthNumber : function() {
             this.month--;
             if (this.month == -1) {
@@ -84,6 +102,9 @@ var datePicker = {
             }
         },
         
+	/**
+	 * Create the calendar
+	 */
         createCalendar : function(day, month, year) {
             
             var tableElement = document.createElement('table');
@@ -233,14 +254,26 @@ var datePicker = {
         
         },
         
+	/**
+	 * Adds highlight class to the element
+	 * 
+	 */
         highlightDay : function(element) {
             element.className = element.className + ' highlight';
         },
         
+	/**
+	 * Removes the highlight class for the element
+	 * 
+	 */
         resetHighlightDay : function(element) {
             element.className = element.className.replace(' highlight', '');
         },
         
+	/**
+	 * Select date in the calendar
+	 * 
+	 */
         pickDate : function(year,month,day) {
             month++;
             day	= day < 10 ? '0'+day : day;
@@ -251,23 +284,38 @@ var datePicker = {
 	
             else {
 		this.targetElement.value= day+'/'+ month +'/'+year;
+		
+		// set the selected values
 		this.selectedDay = day;
 		this.selectedMonth = month-1;
 		this.selectedYear = year;
 		
+		// close the calendar
 		this.closeCalendar();
             }
         },
         
+	/**
+	 * Close the calendar
+	 */
         closeCalendar : function() {
             var element = document.getElementById('calendar:popup');
             element.parentNode.removeChild(element);
         },
         
+	/**
+	 * Get the real year number
+	 */
         getRealYear : function(dateObj) {
             return (dateObj.getYear() % 100) + (((dateObj.getYear() % 100) < 39) ? 2000 : 1900);
         },
         
+	/**
+	 * Get the number of days for the given month and year
+	 *
+	 * Handles leap years
+	 * 
+	 */
         getDaysPerMonth : function(month, year) {
             if ((year % 4) == 0) {
 		if ((year % 100) == 0 && (year % 400) != 0) {
@@ -280,6 +328,10 @@ var datePicker = {
             }
         },
         
+	/**
+	 * Get the offset for the element
+	 * 
+	 */
         getOffset : function (element) {
 	        var x = 0;
 		var y = 0;
@@ -292,49 +344,4 @@ var datePicker = {
 		}
 		return { top: y, left: x };
         }
-}
-
-function showCalender(elPos, tgtEl)
-{
-	targetEl = false;
-
-	if (document.getElementById(tgtEl))
-	{
-		targetEl = document.getElementById(tgtEl);
-	}
-	else
-	{
-		if (document.forms[0].elements[tgtEl])
-		{
-			targetEl = document.forms[0].elements[tgtEl];
-		}
-	}
-	var calTable = document.getElementById('calenderTable');
-
-	var positions = [0,0];
-	var positions = getParentOffset(elPos, positions);	
-	calTable.style.left = positions[0]+'px';		
-	calTable.style.top = positions[1]+'px';			
-
-	calTable.style.display='block';
-
-	var matchDate = new RegExp('^([0-9]{2})-([0-9]{2})-([0-9]{4})$');
-	var m = matchDate.exec(targetEl.value);
-	if (m == null)
-	{
-		var calendar = createCalender(false, false, false);
-		showCalenderBody(calendar);
-	}
-	else
-	{
-		if (m[1].substr(0, 1) == 0)
-			m[1] = m[1].substr(1, 1);
-		if (m[2].substr(0, 1) == 0)
-			m[2] = m[2].substr(1, 1);
-		m[2] = m[2] - 1;
-		trs = createCalender(m[3], m[2], m[1]);
-		showCalenderBody(trs);
-	}
-
-	hideSelect(document.body, 1);
 }
