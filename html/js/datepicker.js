@@ -15,6 +15,8 @@ var datePicker = {
 	day: curDate.getDate(),
         month: curDate.getMonth(),
         year: (curDate.getYear() % 100) + (((curDate.getYear() % 100) < 39) ? 2000 : 1900),
+	
+	allowPreDateSelection : false,
         
         dayNames: ['Su', 'Mo', 'Tu','We', 'Th', 'Fr', 'Sa'],
         monthNames: ['January','February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -26,7 +28,7 @@ var datePicker = {
         /**
 	 * Show the calendar
 	 */
-        showCalendar : function(element, targetId) {
+        showCalendar : function(element, targetId, allowPreDateSelection) {
             this.targetElement = document.getElementById(targetId);
             
             if (this.targetElement == null) {
@@ -35,6 +37,10 @@ var datePicker = {
 			this.targetElement = document.forms[0].elements[targetId];
 		}
             }
+	    
+	    if (allowPreDateSelection) {
+		this.allowPreDateSelection = allowPreDateSelection;
+	    }
             
             var positions = this.getOffset(this.targetElement);
             
@@ -130,7 +136,7 @@ var datePicker = {
 	    menuRowElement.className = 'nav-bar';
             var prevMonthCellElement = document.createElement('td');
 	    
-	    if (year < this.curYear || (year == this.curYear && month <= this.curMonth)) {
+	    if (!this.allowPreDateSelection && (year < this.curYear || (year == this.curYear && month <= this.curMonth))) {
 		var disabledLink = document.createElement('span');
 		disabledLink.className = 'disabled';
 		prevMonthCellElement.appendChild(disabledLink);

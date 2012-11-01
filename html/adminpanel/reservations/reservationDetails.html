@@ -6,6 +6,7 @@
 <title>Welcome to UoL Hotel</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="../../css/admin-styles.css" rel="stylesheet" type="text/css" />
+<script src="../../js/ajax_submit.js" type="text/javascript" ></script>
 </head>
 
 <body class="admin">
@@ -35,13 +36,14 @@
    <!-- Content -->
   <div class="w940">
     
+    <div id="output"></div>
     <div class="header_holder margin_top_10">
       <!-- JL: enter your content header within <h1> element -->
         <h1>Details</h1>
        <!-- // JL -->
       </div>
       <!-- JL: please use space below to add your page contents -->
-      <form action="reservationDetails.html">
+      <form action="reservation_confirmation.php" onsubmit="Ajax.xmlHttpPost('reservation_confirmation.php', this, 'output'); return false;">
         <input type="hidden" value="{reservation.reservationId}" name="reservationId" />
         <table id="details" class="w100p margin_top_10">
             <tbody>
