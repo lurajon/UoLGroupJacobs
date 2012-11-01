@@ -25,29 +25,56 @@ function validateFormOnSubmit(whichForm) {
 		errorCounter += validateDate(whichForm.depart_date);
 		if (errorCounter === 0) errorCounter += validateDateDiff(whichForm.arrive_date, whichForm.depart_date);
 	}
-	
-	if (whichForm.id == "guestbook_form") {
+
+	if (whichForm.id == 'guestbook_form') {
 		errorCounter += validateGuestBookForm(whichForm);
+	}
+	
+	if (whichForm.id == 'userDetails_form') {
+		errorCounter += validateUserDetailsForm(whichForm);
 	}
 	
 	if (whichForm.id == "reservation_details_form") {
 		errorCounter += validateReservationDetailsForm(whichForm);
+
 	}
 	
 	if (errorCounter != 0) {
 		return false;
-	} else return true;
+	} else {
+		return true;
+	}
 }
 
 /**
  * Validate the guestbook form
  */
-function validateGuestBookForm(form, errorCounter) {
+function validateGuestBookForm(form) {
+	var errorCounter = 0;
 	errorCounter += validateName(form.name);
 	errorCounter += validateEmail(form.email);
 	errorCounter += validateAge(form.age);
 	errorCounter += validateName(form.purpose);
 	errorCounter += validateName(form.comment);
+	
+	return errorCounter;
+}
+
+/**
+ *
+ */
+function validateUserDetailsForm(form) {
+	
+	var errorCounter = 0;
+	
+	errorCounter += validateUsername(form.username);
+	errorCounter += validateName(form.firstname);
+	errorCounter += validateName(form.lastname);
+	errorCounter += validateEmail(form.email);
+	errorCounter += validatePassword(form.password);
+	errorCounter += validateEqualPasswords(form.password, form.retype_password);
+	
+	return errorCounter;
 }
 
 /**
@@ -92,6 +119,69 @@ function validateEmail(box) {
 	errorOff(box);
 	return 0;
 	
+}
+
+function validateUsername(box) {
+	
+	if (validateIsEmpty(box)) {
+		errorOn(box, "Required field!");
+		return 1;
+	}
+	
+	var value = box.value;
+	
+	if (value.length < 6) {
+		errorOn(box, "The username must be at least 6 characters");
+		return 1;
+	}
+	
+	var validator = /^[a-zA-Z]*$/;
+	if (!validator.test(value)) {
+		errorOn(box, "The username can only consist of characters");
+		return 1;
+	}
+	
+	errorOff(box);
+	
+	return 0;
+}
+
+function validatePassword(box) {
+	if (validateIsEmpty(box)) {
+		errorOn(box, "Required field!");
+		return 1;
+	}
+	
+	var value = box.value;
+	
+	if (value.length < 6) {
+		errorOn(box, "The password must be at least 6 characters");
+		return 1;
+	}
+	
+	errorOff(box);
+	
+	return 0;
+}
+
+function validateEqualPasswords(passwordElement, confirmPasswordElement) {
+	var password = passwordElement.value;
+	var confirmPassword = confirmPasswordElement.value;
+	
+	if (password != confirmPassword) {
+		errorOn(passwordElement, 'The passwords do not match');
+		errorOn(confirmPasswordElement,'');
+		
+		// reset passwords
+		confirmPasswordElement.value = '';
+		passwordElement.value = '';
+		
+		return 1;
+	}
+	
+	errorOff(passwordElement);
+	
+	return 0;
 }
 
 function validateDate(box) {
