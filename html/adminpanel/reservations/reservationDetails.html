@@ -6,6 +6,23 @@
 <title>Welcome to UoL Hotel</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="../../css/admin-styles.css" rel="stylesheet" type="text/css" />
+<script src="../../js/ajax_submit.js" type="text/javascript" ></script>
+<script src="../../js/form_validation.js" type="text/javascript" ></script>
+<script src="../../js/datepicker.js" type="text/javascript"></script>
+<script type="text/javascript">
+  
+  function validateForm(form) {
+    
+    var noErrors = validateFormOnSubmit(form);
+    
+    if (noErrors) {
+      Ajax.xmlHttpPost('reservation_confirmation.php', form, 'output');
+    }
+    
+    return false;
+  }
+  
+</script>
 </head>
 
 <body class="admin">
@@ -41,8 +58,9 @@
        <!-- // JL -->
       </div>
       <!-- JL: please use space below to add your page contents -->
-      <form action="reservationDetails.html">
-        <input type="hidden" value="{reservation.reservationId}" name="reservationId" />
+      <form id="reservation_details_form" action="reservation_confirmation.php" onsubmit="return validateForm(this)">
+        <input type="hidden" value="reservation.reservationId" name="reservationId" />
+        <div id="output"></div>
         <table id="details" class="w100p margin_top_10">
             <tbody>
                 <tr>
@@ -52,15 +70,15 @@
                     <td>Customer</td>
                     <td>{reservation.customer.name}</td>
                     <td></td>
-                    <td>E.mail</td>
-                    <td>{reservation.customer.eMail}</td>
+                    <td>E-mail</td>
+                    <td>{reservation.customer.eMail}<input type="text" value="{reservation.customer.eMail}" name="email" id="email" onfocus="errorOff(this)" /><span id="email_error"></span></td>
                 </tr>
                 <tr>
                   <td>Arrival Date:</td>
-                  <td>{reservation.arrivalDate} <!-- <input type="text" value="{reservation.arrivalDate} name="arrivalDate" id="arrivalDate" />  enabled if the reservation status allows its --></td>
+                  <td>{reservation.arrivalDate}<input type="text" value="{reservation.arrivalDate}" name="arrival_date" id="arrival_date" /><input type="button" onclick="datePicker.showCalendar(this, 'arrival_date')" value="Show Calendar" /><span id="arrival_date_error"></span></td>
                   <td></td>
                   <td>Departure Date:</td>
-                  <td>{reservation.departureDate}<!-- <input type="text" value="{reservation.departureDate} name="departureDate" id="departureDate" />  enabled if the reservation status allows its --></td>
+                  <td>{reservation.departureDate}<input type="text" value="{reservation.departureDate}" name="departure_date" id="departure_date" /><input type="button" onclick="datePicker.showCalendar(this, 'departure_date', true)" value="Show Calendar" /><span id="departure_date_error"></span></td>
                 </tr>
                <tr>
                 <td>Number of nights</td>

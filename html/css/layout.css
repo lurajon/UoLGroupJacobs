@@ -145,3 +145,41 @@ input.error {
 form div.inner {
     padding: 20px;
 }
+
+.message {
+	padding: 10px;
+	font-size: 0.8em;
+}
+
+.message span.icon {
+	width: 16px;
+	height: 16px;
+	display: block;
+	float:left;
+	margin-right: 10px;
+	margin-top: 1px;
+}
+
+.message.success {
+	background: #e3e8f4;
+	box-shadow: 0 0 5px #e3e8f4;
+	-moz-box-shadow: 0 0 5px #e3e8f4;
+	-webkit-box-shadow: 0 0 5px #e3e8f4;
+	border: 1px solid #d3ddf6;
+}
+
+.message.success span.icon {
+	background: url(../images/icons/ui-icons_0033cc_256x240.png) no-repeat -16px -144px;
+}
+
+.message.error {
+	background: #f7e4e5;
+	box-shadow: 0 0 5px #f7e4e5;
+	-moz-box-shadow: 0 0 5px #f7e4e5;
+	-webkit-box-shadow: 0 0 5px #f7e4e5;
+	border: 1px solid #f7d2d5;
+}
+
+.message.error span.icon {
+	background: url(../images/icons/ui-icons_eb2133_256x240.png) no-repeat 0 -144px;
+}
