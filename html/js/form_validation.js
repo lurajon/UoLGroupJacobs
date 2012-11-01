@@ -26,24 +26,52 @@ function validateFormOnSubmit(whichForm) {
 		if (errorCounter === 0) errorCounter += validateDateDiff(whichForm.arrive_date, whichForm.depart_date);
 	}
 	
-	if (whichForm.id == "guestbook_form") {
-		validateGuestBookForm(whichForm, errorCounter);
+	if (whichForm.id == 'guestbook_form') {
+		errorCounter += validateGuestBookForm(whichForm);
+	}
+	
+	if (whichForm.id == 'userDetails_form') {
+		errorCounter += validateUserDetailsForm(whichForm);
 	}
 	
 	if (errorCounter != 0) {
 		return false;
-	} else return true;
+	} else {
+		return true;
+	}
 }
 
 /**
  * Validate the guestbook form
  */
-function validateGuestBookForm(form, errorCounter) {
+function validateGuestBookForm(form) {
+	var errorCounter = 0;
 	errorCounter += validateName(form.name);
 	errorCounter += validateEmail(form.email);
 	errorCounter += validateAge(form.age);
 	errorCounter += validateName(form.purpose);
 	errorCounter += validateName(form.comment);
+	
+	return errorCounter;
+}
+
+/**
+ *
+ */
+function validateUserDetailsForm(form) {
+	
+	var errorCounter = 0;
+	
+	errorCounter += validateUsername(form.username);
+	errorCounter += validateName(form.firstname);
+	errorCounter += validateName(form.lastname);
+	errorCounter += validateEmail(form.email);
+	
+	if (errorCounter === 0) {
+		errorCounter += validateEqualPasswords(form.password, form.retype_password);
+	}
+	
+	return errorCounter;
 }
 
 function validateName(box) {
@@ -70,6 +98,49 @@ function validateEmail(box) {
 			return 0;
 		}
 	}
+}
+
+function validateUsername(box) {
+	
+	if (validateIsEmpty(box)) {
+		errorOn(box, "Required field!");
+		return 1;
+	}
+	
+	var value = box.value;
+	
+	if (value.length < 6) {
+		errorOn(box, "The username must be at least 6 characters");
+		return 1;
+	}
+	
+	var validator = /^[a-zA-Z]*$/;
+	if (!validator.test(value)) {
+		errorOn(box, "The username can only consist of characters");
+		return 1;
+	}
+	
+	errorOff(box);
+	
+	return 0;
+}
+
+function validatePassword(box) {
+	if (validateIsEmpty(box)) {
+		errorOn(box, "Required field!");
+		return 1;
+	}
+	
+	var value = box.value;
+	
+	if (value.length < 6) {
+		errorOn(box, "The password must be at least 6 characters");
+		return 1;
+	}
+	
+	errorOff(box);
+	
+	return 0;
 }
 
 function validateDate(box) {
