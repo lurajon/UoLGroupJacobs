@@ -20,6 +20,16 @@ var Ajax = {
         }
         
         xhr.xmlHttpReq.open('POST', url, async);
+        xhr.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         
+        if (async) {
+            // check state etc..
+        } 
+        
+        xhr.xmlHttpReq.send('parameter string');
+        
+        if (!async) {
+            // do the sync stuff here
+        }
     }
 }
