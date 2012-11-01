@@ -25,13 +25,18 @@ function validateFormOnSubmit(whichForm) {
 		errorCounter += validateDate(whichForm.depart_date);
 		if (errorCounter === 0) errorCounter += validateDateDiff(whichForm.arrive_date, whichForm.depart_date);
 	}
-	
+
 	if (whichForm.id == 'guestbook_form') {
 		errorCounter += validateGuestBookForm(whichForm);
 	}
 	
 	if (whichForm.id == 'userDetails_form') {
 		errorCounter += validateUserDetailsForm(whichForm);
+	}
+	
+	if (whichForm.id == "reservation_details_form") {
+		errorCounter += validateReservationDetailsForm(whichForm);
+
 	}
 	
 	if (errorCounter != 0) {
@@ -72,6 +77,23 @@ function validateUserDetailsForm(form) {
 	return errorCounter;
 }
 
+/**
+ * Validate the resevation details form 
+ */
+function validateReservationDetailsForm(form) {
+	var errorCounter = 0;
+	
+	errorCounter += validateEmail(form.email);
+	errorCounter += validateDate(form.arrival_date);
+	errorCounter += validateDate(form.departure_date);
+	
+	if (errorCounter === 0) {
+		errorCounter += validateDateDiff(form.arrival_date, form.departure_date);
+	}
+	
+	return errorCounter;
+}
+
 function validateName(box) {
 	if (validateIsEmpty(box)) {
 		errorOn(box, "Required field!");
@@ -87,15 +109,16 @@ function validateEmail(box) {
 	if (validateIsEmpty(box)) {
 		errorOn(box, "Required field!");
 		return 1;
-	} else {
-		if (!validator.test(box.value)) {
-			errorOn(box, "Invalid Email address!");
-			return 1;
-		} else {
-			errorOff(box);
-			return 0;
-		}
 	}
+	
+	if (!validator.test(box.value)) {
+		errorOn(box, "Invalid Email address!");
+		return 1;
+	}
+	
+	errorOff(box);
+	return 0;
+	
 }
 
 function validateUsername(box) {
