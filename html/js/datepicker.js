@@ -50,8 +50,9 @@ var datePicker = {
             calendarBody.style.left = positions.left  + 'px';
             calendarBody.style.top = positions.top; + 'px';
             //calendarBody.style.backgroundColor = '#333333';
-            calendarBody.style.display='block';
-            calendarBody.style.position='absolute';
+            calendarBody.style.display = 'block';
+            calendarBody.style.position = 'absolute';
+	    calendarBody.style.zIndex = '1100';
             
             this.targetElement.parentNode.appendChild(calendarBody);
             
