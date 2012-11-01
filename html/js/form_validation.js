@@ -66,10 +66,8 @@ function validateUserDetailsForm(form) {
 	errorCounter += validateName(form.firstname);
 	errorCounter += validateName(form.lastname);
 	errorCounter += validateEmail(form.email);
-	
-	if (errorCounter === 0) {
-		errorCounter += validateEqualPasswords(form.password, form.retype_password);
-	}
+	errorCounter += validatePassword(form.password);
+	errorCounter += validateEqualPasswords(form.password, form.retype_password);
 	
 	return errorCounter;
 }
@@ -139,6 +137,26 @@ function validatePassword(box) {
 	}
 	
 	errorOff(box);
+	
+	return 0;
+}
+
+function validateEqualPasswords(passwordElement, confirmPasswordElement) {
+	var password = passwordElement.value;
+	var confirmPassword = confirmPasswordElement.value;
+	
+	if (password != confirmPassword) {
+		errorOn(passwordElement, 'The passwords do not match');
+		errorOn(confirmPasswordElement,'');
+		
+		// reset passwords
+		confirmPasswordElement.value = '';
+		passwordElement.value = '';
+		
+		return 1;
+	}
+	
+	errorOff(passwordElement);
 	
 	return 0;
 }

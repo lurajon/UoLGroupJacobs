@@ -6,9 +6,35 @@
 <title>Welcome to UoL Hotel</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="../../css/admin-styles.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+  var seconds = 10;
+  var timerElement;
+  
+  function startTimer() {
+    timerElement = document.getElementById('timer');
+   
+   timeChange();
+  }
+  
+  function timeChange() {
+    seconds--;
+    if (seconds == 0) {
+      navigateToUsers();
+    } else {
+      timerElement.innerHTML = seconds;
+      setTimeout('timeChange()', 1000);
+    }
+    
+  }
+  
+  function navigateToUsers() {
+    window.location.href = 'users.html';
+  }
+</script>
 </head>
 
-<body class="admin">
+<body class="admin" onload="startTimer()">
 <div class="holder">
   <div class="w140 pad_left_800">
     <div class="member_entry">Admnistration</div>
@@ -60,7 +86,7 @@
         
         <div class="margin_top_10">
           <a href="users.html">Back to users</a>
-          <p>You will be redirected automatically in {sec-counter} seconds</p>
+          <p>You will be redirected automatically in <span id="timer"></span> seconds</p>
         </div>
       <!-- //JL -->
     </div>
