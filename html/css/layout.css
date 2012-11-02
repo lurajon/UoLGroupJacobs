@@ -183,3 +183,14 @@ form div.inner {
 .message.error span.icon {
 	background: url(../images/icons/ui-icons_eb2133_256x240.png) no-repeat 0 -144px;
 }
+
+.icon {
+	background: url(../images/icons/ui-icons_ffffff_256x240.png) no-repeat;
+	width: 12px;
+	height: 12px;
+	display: block;
+}
+
+.ui-icon-calendar {
+	background-position: -34px -114px;
+}

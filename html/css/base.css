@@ -2,7 +2,7 @@
 
 /* base CSS rules */
 
-body {
+body, textarea {
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -35,4 +35,24 @@ p {
 	padding: 0 10px;
 	font-size: 0.8em;
 	text-align: justify;
+}
+
+input[type="submit"], input[type="reset"], input[type="button"], .ui-button, button {
+	background:  url(../images/bg_btn.png) repeat-x center center;
+	border: 1px solid #0033cc;
+	color: #FFFFFF;
+	cursor: pointer;
+	padding: 3px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .ui-button:hover, button:hover {
+	background:  url(../images/bg_btn_over.png) repeat-x center center;
+}
+
+input[type="text"], input[type="password"], input[type="radio"], input[type="checkbox"], select, textarea {
+	border: 1px solid #999;
+}
+
+textarea {
+	font-size: 0.9em;
 }
