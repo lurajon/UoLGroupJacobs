@@ -86,4 +86,10 @@
     padding: 20px;
 }
 
+.admin .required {
+    float:none;
+    clear: none;
+    margin-left: 5px;
+}
+
 
