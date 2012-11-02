@@ -72,7 +72,10 @@ function validateUserDetailsForm(form) {
 	errorCounter += validateName(form.lastname);
 	errorCounter += validateEmail(form.email);
 	errorCounter += validatePassword(form.password);
-	errorCounter += validateEqualPasswords(form.password, form.retype_password);
+	
+	if (errorCounter === 0) {
+		errorCounter += validateEqualPasswords(form.password, form.retype_password);
+	}
 	
 	return errorCounter;
 }
@@ -147,6 +150,7 @@ function validateUsername(box) {
 }
 
 function validatePassword(box) {
+	
 	if (validateIsEmpty(box)) {
 		errorOn(box, "Required field!");
 		return 1;
