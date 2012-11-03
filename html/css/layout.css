@@ -186,9 +186,18 @@ form div.inner {
 
 .icon {
 	background: url(../images/icons/ui-icons_ffffff_256x240.png) no-repeat;
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 	display: block;
+	margin-top: -8px;
+	position: absolute;
+	top: 50%;
+}
+
+.icon-only {
+    height: 12px;
+    padding: 6px;
+    width: 12px;
 }
 
 .ui-icon-calendar {

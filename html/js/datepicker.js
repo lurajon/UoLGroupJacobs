@@ -16,6 +16,8 @@ var datePicker = {
         month: curDate.getMonth(),
         year: (curDate.getYear() % 100) + (((curDate.getYear() % 100) < 39) ? 2000 : 1900),
 	
+	calendarVisible: false,
+	
 	allowPreDateSelection : false,
         
         dayNames: ['Su', 'Mo', 'Tu','We', 'Th', 'Fr', 'Sa'],
@@ -29,6 +31,10 @@ var datePicker = {
 	 * Show the calendar
 	 */
         showCalendar : function(element, targetId, allowPreDateSelection) {
+		if (this.calendarVisible) {
+			this.closeCalendar();
+		}
+		
             this.targetElement = document.getElementById(targetId);
             
             if (this.targetElement == null) {
@@ -64,6 +70,7 @@ var datePicker = {
                 
                 calendarBody.appendChild(calendar);
 		//showCalenderBody(calendar);
+		this.calendarVisible = true;
             }
 	
         },
@@ -243,7 +250,7 @@ var datePicker = {
             td.setAttribute('onmouseout', 'datePicker.resetHighlightDay(this)');
            	
 		if (this.targetElement) {
-			if (year <= this.curYear && month <= this.curMonth && d < this.curDay) {
+			if (!this.allowPreDateSelection && (year <= this.curYear && month <= this.curMonth && d < this.curDay)) {
 				td.className = 'disabled';	
 			} else {
 				td.setAttribute('onclick', 'datePicker.pickDate(' + year +', '+ month +', '+ d + ');');
@@ -308,6 +315,7 @@ var datePicker = {
         closeCalendar : function() {
             var element = document.getElementById('calendar:popup');
             element.parentNode.removeChild(element);
+	    this.calendarVisible = false;
         },
         
 	/**
@@ -342,7 +350,6 @@ var datePicker = {
         getOffset : function (element) {
 	        var x = 0;
 		var y = 0;
-	
 		
 		while( element && !isNaN( element.offsetLeft ) && !isNaN( element.offsetTop ) ) {
 		    x += element.offsetLeft - element.scrollLeft;

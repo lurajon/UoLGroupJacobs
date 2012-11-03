@@ -74,7 +74,9 @@
 }
 
 .admin input[type="text"] {
-    margin-top: 3px;
+    margin-top: 2px;
+    float:left;
+    padding: 3px;
 }
 
 .admin form div.inner, .admin form fieldset {
@@ -92,4 +94,7 @@
     margin-left: 5px;
 }
 
+.admin .ui-calendar table tr td, .admin .ui-calendar table tr th {
+    border: none !important;
+}
 

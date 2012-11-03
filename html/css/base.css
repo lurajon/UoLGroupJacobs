@@ -45,6 +45,17 @@ input[type="submit"], input[type="reset"], input[type="button"], .ui-button, but
 	padding: 3px;
 }
 
+.ui-button {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.1em;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+}
+
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .ui-button:hover, button:hover {
 	background:  url(../images/bg_btn_over.png) repeat-x center center;
 }
