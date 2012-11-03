@@ -54,13 +54,11 @@ var datePicker = {
             calendarBody.setAttribute('id', 'calendar:popup');
             calendarBody.className = 'ui-calendar box-shadow';
             calendarBody.style.left = positions.left  + 'px';
-            calendarBody.style.top = positions.top; + 'px';
+	    calendarBody.style.top = positions.top + 20 + 'px';
             //calendarBody.style.backgroundColor = '#333333';
             calendarBody.style.display = 'block';
             calendarBody.style.position = 'absolute';
 	    calendarBody.style.zIndex = '1100';
-            
-            this.targetElement.parentNode.appendChild(calendarBody);
             
             var matchDate = new RegExp('^([0-9]{2})-([0-9]{2})-([0-9]{4})$');
             var m = matchDate.exec(element.value);
@@ -72,6 +70,10 @@ var datePicker = {
 		//showCalenderBody(calendar);
 		this.calendarVisible = true;
             }
+	
+		// get body
+		var bodyElement = document.getElementsByTagName("body")[0];
+		bodyElement.appendChild(calendarBody);
 	
         },
         
