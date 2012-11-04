@@ -313,8 +313,11 @@ function errorOn(box, msg) {
 	var errLabel = document.getElementById(constructLabel);
 	errLabel.textContent = msg;
 	errLabel.style.visibility = 'visible';
-	//box.style.background = 'yellow';
-	box.className = box.className + ' error';
+	
+	// box already have error class name
+	if (box.className.indexOf('error') == -1) {
+		box.className = box.className + ' error';
+	}
 }
 
 function errorOff(box) {

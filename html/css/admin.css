@@ -73,7 +73,7 @@
     width: 140px;
 }
 
-.admin input[type="text"] {
+.admin input[type="text"], .admin input[type="password"] {
     margin-top: 2px;
     float:left;
     padding: 3px;
