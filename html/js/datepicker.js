@@ -16,6 +16,8 @@ var datePicker = {
         month: curDate.getMonth(),
         year: (curDate.getYear() % 100) + (((curDate.getYear() % 100) < 39) ? 2000 : 1900),
 	
+	calendarVisible: false,
+	
 	allowPreDateSelection : false,
         
         dayNames: ['Su', 'Mo', 'Tu','We', 'Th', 'Fr', 'Sa'],
@@ -29,6 +31,10 @@ var datePicker = {
 	 * Show the calendar
 	 */
         showCalendar : function(element, targetId, allowPreDateSelection) {
+		if (this.calendarVisible) {
+			this.closeCalendar();
+		}
+		
             this.targetElement = document.getElementById(targetId);
             
             if (this.targetElement == null) {
@@ -48,13 +54,11 @@ var datePicker = {
             calendarBody.setAttribute('id', 'calendar:popup');
             calendarBody.className = 'ui-calendar box-shadow';
             calendarBody.style.left = positions.left  + 'px';
-            calendarBody.style.top = positions.top; + 'px';
+	    calendarBody.style.top = positions.top + 20 + 'px';
             //calendarBody.style.backgroundColor = '#333333';
             calendarBody.style.display = 'block';
             calendarBody.style.position = 'absolute';
 	    calendarBody.style.zIndex = '1100';
-            
-            this.targetElement.parentNode.appendChild(calendarBody);
             
             var matchDate = new RegExp('^([0-9]{2})-([0-9]{2})-([0-9]{4})$');
             var m = matchDate.exec(element.value);
@@ -64,7 +68,12 @@ var datePicker = {
                 
                 calendarBody.appendChild(calendar);
 		//showCalenderBody(calendar);
+		this.calendarVisible = true;
             }
+	
+		// get body
+		var bodyElement = document.getElementsByTagName("body")[0];
+		bodyElement.appendChild(calendarBody);
 	
         },
         
@@ -243,7 +252,7 @@ var datePicker = {
             td.setAttribute('onmouseout', 'datePicker.resetHighlightDay(this)');
            	
 		if (this.targetElement) {
-			if (year <= this.curYear && month <= this.curMonth && d < this.curDay) {
+			if (!this.allowPreDateSelection && (year <= this.curYear && month <= this.curMonth && d < this.curDay)) {
 				td.className = 'disabled';	
 			} else {
 				td.setAttribute('onclick', 'datePicker.pickDate(' + year +', '+ month +', '+ d + ');');
@@ -308,6 +317,7 @@ var datePicker = {
         closeCalendar : function() {
             var element = document.getElementById('calendar:popup');
             element.parentNode.removeChild(element);
+	    this.calendarVisible = false;
         },
         
 	/**
@@ -342,7 +352,6 @@ var datePicker = {
         getOffset : function (element) {
 	        var x = 0;
 		var y = 0;
-	
 		
 		while( element && !isNaN( element.offsetLeft ) && !isNaN( element.offsetTop ) ) {
 		    x += element.offsetLeft - element.scrollLeft;
