@@ -48,17 +48,19 @@ var datePicker = {
 		this.allowPreDateSelection = allowPreDateSelection;
 	    }
             
-            var positions = this.getOffset(this.targetElement);
+           // var positions = this.getOffset(this.targetElement);
+			
+			var positions = this.getOffset(element); // ZM
             
             var calendarBody = document.createElement('div');
             calendarBody.setAttribute('id', 'calendar:popup');
             calendarBody.className = 'ui-calendar box-shadow';
-            calendarBody.style.left = positions.left  + 'px';
-	    calendarBody.style.top = positions.top + 20 + 'px';
+            calendarBody.style.left = positions.left - 165  + 'px'; // ZM
+	    	calendarBody.style.top = positions.top + 26 + 'px'; // ZM
             //calendarBody.style.backgroundColor = '#333333';
             calendarBody.style.display = 'block';
             calendarBody.style.position = 'absolute';
-	    calendarBody.style.zIndex = '1100';
+	    	calendarBody.style.zIndex = '1100';
             
             var matchDate = new RegExp('^([0-9]{2})-([0-9]{2})-([0-9]{4})$');
             var m = matchDate.exec(element.value);
