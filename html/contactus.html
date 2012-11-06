@@ -47,7 +47,7 @@
           <h3>OnLine Reservations</h3>
         </div>
         <form action="availability.html" method="get" id="availability_check" onsubmit="return validateFormOnSubmit(this)">
-          <div>
+          <fieldset>
             <span id="arrive_date_error" class="required short"></span>
             <label>Arrival:</label>
             <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
@@ -68,7 +68,7 @@
             </select>
             <label></label>
             <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
-          </div>
+          </fieldset>
         </form>
       </div>
     </div>
