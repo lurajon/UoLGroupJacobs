@@ -142,13 +142,18 @@ input.error {
 	margin: 0;
 }
 
-form div.inner {
+form div.inner, form fieldset.inner {
     padding: 20px;
 }
 
 .message {
 	padding: 10px;
 	font-size: 0.8em;
+}
+
+form div.inner .required, form fieldset.inner .required {
+	margin-left: 3px;
+	clear: none;
 }
 
 .message span.icon {
