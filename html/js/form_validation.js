@@ -34,9 +34,12 @@ function validateFormOnSubmit(whichForm) {
 		errorCounter += validateUserDetailsForm(whichForm);
 	}
 	
-	if (whichForm.id == "reservation_details_form") {
+	if (whichForm.id == 'reservation_details_form') {
 		errorCounter += validateReservationDetailsForm(whichForm);
-
+	}
+	
+	if (whichForm.id == 'personal_details_form') {
+		errorCounter += validatePersonalDetailsForm(whichForm);
 	}
 	
 	if (errorCounter != 0) {
@@ -93,6 +96,18 @@ function validateReservationDetailsForm(form) {
 	if (errorCounter === 0) {
 		errorCounter += validateDateDiff(form.arrival_date, form.departure_date);
 	}
+	
+	return errorCounter;
+}
+
+/**
+ * Validate personal details form
+ */
+function validatePersonalDetailsForm(form) {
+	var errorCounter = 0;
+	
+	errorCounter += validateName(form.customer_name);
+	errorCounter += validateEmail(form.customer_mail);
 	
 	return errorCounter;
 }

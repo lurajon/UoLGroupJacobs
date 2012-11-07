@@ -242,6 +242,11 @@ label {
 .reservation_form label {
 	width: 160px;
 }
+
+.reservation_form .inner label {
+	width: 100px;
+}
+
 .reservation_form input, .reservation_form select, .reservation_form textarea {
 	float: left;
 	width: 300px;

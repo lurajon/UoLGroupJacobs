@@ -8,6 +8,7 @@
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/form_validation.js"></script>
 </head>
 
 <body>
@@ -96,14 +97,16 @@
         <h1>Personal Details</h1>
         <!-- // ZM --> 
       </div>
-      <form id="confroom_reservation" action="conf_confirmation.html" method="get" class="reservation_form">
+      <form id="personal_details_form" action="#" method="get" class="reservation_form" onsubmit="return validateFormOnSubmit(this); return false;">
       <!-- ZM: GET method used temporarely as server limits use of POST when submiting form to static HTML -->
-        <fieldset>
+        <fieldset class="inner">
           <legend class="hidden">Please enter required information</legend>
           <label for="customer_name">Name:</label>
-          <input name="customer_name" type="text" id="customer_name" value="" class="date_range"/>
+          <input name="customer_name" type="text" id="customer_name" value="" onfocus="errorOff(this)" class="date_range"/>
+          <span id="customer_name_error" class="required"></span>
           <label for="customer_mail">Email:</label>
-          <input name="customer_mail" type="text" id="customer_mail" value="" class="date_range"/>
+          <input name="customer_mail" type="text" id="customer_mail" value="" onfocus="errorOff(this)" class="date_range"/>
+          <span id="customer_mail_error" class="required"></span>
           <label for="customer_company">Company:</label>
           <input name="customer_company" type="text" id="customer_company" value="" class="date_range"/>
           <label for="customer_message">Message:</label>
