@@ -39,6 +39,10 @@ function validateFormOnSubmit(whichForm) {
 
 	}
 	
+	if (whichForm.id == 'contactusform') {
+		errorCounter += validateContactusForm(whichForm);
+	}
+	
 	if (errorCounter != 0) {
 		return false;
 	} else {
@@ -57,6 +61,16 @@ function validateGuestBookForm(form) {
 	errorCounter += validateName(form.purpose);
 	errorCounter += validateName(form.comment);
 	
+	return errorCounter;
+}
+
+function validateContactusForm(form) {
+	var errorCounter = 0;
+	
+	errorCounter += validateName(form.name);
+	errorCounter += validateEmail(form.email);
+	errorCounter += validateDefault(form.comment);
+
 	return errorCounter;
 }
 

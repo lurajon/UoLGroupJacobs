@@ -10,6 +10,18 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
 <script type="text/javascript" src="js/form_validation.js"></script>
+<script type="text/javascript" src="js/ajax_submit.js"></script>
+<script type="text/javascript">
+  function validateForm(form) {
+    var noErrors = validateFormOnSubmit(form);
+    
+    if (noErrors) {
+      Ajax.xmlHttpPost('contactus_confirmation.php', form, 'output');
+    }
+    
+    return false;
+  }
+</script>
 </head>
 
 <body onload="image_slider();">
@@ -50,9 +62,11 @@
             <span id="arrive_date_error" class="required short"></span>
             <label>Arrival:</label>
             <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
+            <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'arrive_date')" ><span class="icon ui-icon-calendar" ></span></div>
             <span id="depart_date_error" class="required short"></span>
             <label>Departure:</label>
             <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
+            <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'depart_date')"><span class="icon ui-icon-calendar" ></span></div>
             <label>Room Type:</label>
             <select id="room_type" class="small_form_select" onchange="sizeOptChange(this)">
               <option value="1" selected="selected">Guest Room</option>
@@ -116,28 +130,38 @@
         <h1>Contact us</h1>
         <!-- // ZM --> 
       </div>
+       
       <p>Please fill out the form below to contact us.</p>
-      <form action="#" method="post">
+      <div class="margin_top_10" id="output"></div>
+      <form id="contactusform" action="#" method="get" onsubmit="return validateForm(this);">
         <!-- AJAX to give confirmation message back to this page -->
-        <div class="name_contact">
-          <label>Name:</label>
-          <input type="text" />
-        </div>
-        <div class="mail_contact">
-          <label>E-mail:</label>
-          <input type="text" />
-        </div>
-        <div>
-          <label>Comments: </label>
-        </div>
-        <div class="clear"> </div>
-        <div>
-          <textarea name="comment" rows="10" cols="30"></textarea>
-        </div>
-        <div>
-          <input type = "submit" value = "Submit" />
-          <input type = "reset" value = "Clear" />
-        </div>
+        <fieldset>
+          <div>
+                <label for="name" class="required-field">Name:</label>
+                <input type="text" value="" name="name" id="name" onfocus="errorOff(this)" />
+                <span id="name_error" class="required"></span>
+                <div class="clear"></div>
+              </div>
+
+              <div>
+                <label for="email" class="required-field">E-mail:</label>
+                <input type="text" value="" name="email" id="email" onfocus="errorOff(this)" />
+                <span id="email_error" class="required"></span>
+                <div class="clear"></div>
+              </div>
+              <div>
+                <label class="clear-width" class="required-field">Your comment:</label>
+                 <div class="clear"></div>
+	      </div>
+	      <div> <span id="comment_error" class="required"></span> </div>
+              <div>
+                <textarea id="comment" name="comment"  cols="40" rows="10" class="w100p borderBox" onfocus="errorOff(this)"></textarea>
+              </div>
+	    <div>
+              <input type="submit" value="Submit" />
+              <input type="reset" value="Clear" />
+            </div>
+        </fieldset>
       </form>
     </div>
   </div>
