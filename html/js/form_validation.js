@@ -86,7 +86,10 @@ function validateUserDetailsForm(form) {
 	errorCounter += validateName(form.lastname);
 	errorCounter += validateEmail(form.email);
 	errorCounter += validatePassword(form.password);
-	errorCounter += validateEqualPasswords(form.password, form.retype_password);
+	
+	if (errorCounter === 0) {
+		errorCounter += validateEqualPasswords(form.password, form.retype_password);
+	}
 	
 	return errorCounter;
 }
@@ -161,6 +164,7 @@ function validateUsername(box) {
 }
 
 function validatePassword(box) {
+	
 	if (validateIsEmpty(box)) {
 		errorOn(box, "Required field!");
 		return 1;
@@ -323,8 +327,11 @@ function errorOn(box, msg) {
 	var errLabel = document.getElementById(constructLabel);
 	errLabel.textContent = msg;
 	errLabel.style.visibility = 'visible';
-	//box.style.background = 'yellow';
-	box.className = box.className + ' error';
+	
+	// box already have error class name
+	if (box.className.indexOf('error') == -1) {
+		box.className = box.className + ' error';
+	}
 }
 
 function errorOff(box) {

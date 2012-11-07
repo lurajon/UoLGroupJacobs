@@ -10,6 +10,7 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
 <script type="text/javascript" src="js/form_validation.js"></script>
+<script type="text/javascript" src="js/datepicker.js"></script>
 </head>
 
 <body onload="image_slider();">
@@ -50,9 +51,11 @@
             <span id="arrive_date_error" class="required short"></span>
             <label>Arrival:</label>
             <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
+            <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'arrive_date')" ><span class="icon ui-icon-calendar" ></span></div>
             <span id="depart_date_error" class="required short"></span>
             <label>Departure:</label>
             <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
+            <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'depart_date')"><span class="icon ui-icon-calendar" ></span></div>
             <label>Room Type:</label>
             <select id="room_type" class="small_form_select" onchange="sizeOptChange(this)">
               <option value="1" selected="selected">Guest Room</option>

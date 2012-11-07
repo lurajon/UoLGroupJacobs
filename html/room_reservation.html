@@ -9,6 +9,7 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
 <script type="text/javascript" src="js/form_validation.js"></script>
+<script type="text/javascript" src="js/datepicker.js"></script>
 </head>
 
 <body onload="image_slider();">
@@ -98,12 +99,12 @@
           <input name="customer_mail" type="text" id="customer_mail" value="" class="date_range"/>
           <span id="arrive_date_error" class="required"></span>
           <label for="arrive_date">* Date of Arrival:</label>
-          <input name="arrive_date" type="text" id="arrive_date" value="" class="date_range"/>
-          <span class="date_format">(dd/mm/yyyy)</span>
+          <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)"/>
+          <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'arrive_date')" style="float:left"><span class="icon ui-icon-calendar" ></span></div>
           <span id="depart_date_error" class="required"></span>
           <label for="depart_date">* Date of Departure:</label>
-          <input name="depart_date" type="text" id="depart_date" value="" class="date_range"/>
-          <span class="date_format">(dd/mm/yyyy)</span>
+          <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)"/>
+          <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'depart_date')" style="float:left"><span class="icon ui-icon-calendar" ></span></div>
           <label for="room_size">Room Size:</label>
           <select id="room_size" class="small_form_select">
             <option value="1" selected="selected">Single Bed</option>

@@ -73,8 +73,10 @@
     width: 140px;
 }
 
-.admin input[type="text"] {
-    margin-top: 3px;
+.admin input[type="text"], .admin input[type="password"] {
+    margin-top: 2px;
+    float:left;
+    padding: 3px;
 }
 
 .admin form div.inner, .admin form fieldset {
@@ -86,4 +88,13 @@
     padding: 20px;
 }
 
+.admin .required {
+    float:none;
+    clear: none;
+    margin-left: 5px;
+}
+
+.admin .ui-calendar table tr td, .admin .ui-calendar table tr th {
+    border: none !important;
+}
 
