@@ -262,6 +262,7 @@ label {
 }
 #availability_check fieldset {
 	border:none;
+	padding:0px !important;
 }
 
 .ui-calendar {
