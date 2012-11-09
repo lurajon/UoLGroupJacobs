@@ -355,7 +355,7 @@ var datePicker = {
 	        var x = 0;
 		var y = 0;
 		
-		while( element && !isNaN( element.offsetLeft ) && !isNaN( element.offsetTop ) ) {
+		while( element && !isNaN( element.offsetLeft ) && !isNaN( element.offsetTop ) && element != document.body ) {
 		    x += element.offsetLeft - element.scrollLeft;
 		    y += element.offsetTop - element.scrollTop;
 		    element = element.offsetParent;
