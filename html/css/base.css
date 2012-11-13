@@ -54,6 +54,7 @@ input[type="submit"], input[type="reset"], input[type="button"], .ui-button, but
     position: relative;
     text-align: center;
     text-decoration: none !important;
+	float: left;
 }
 
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .ui-button:hover, button:hover {

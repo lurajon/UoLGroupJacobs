@@ -240,8 +240,13 @@ function validateDate(box) {
 				return 1;
 			} else {
 				var todayDate = new Date();
+				var todayPlus3Months = new Date(); // used for limiting 3 months in advance
+				todayPlus3Months.setMonth(todayDate.getMonth()+3); // limit to 3 months in future
 				if (todayDate >= dateChecker) {
 					errorOn(box, "Reservations are unavailabe on or before current date!");
+					return 1;
+				} else if (dateChecker>todayPlus3Months){
+					errorOn(box, "Reservations are limited to 3 months in advance!");
 					return 1;
 				} else {
 					errorOff(box);
@@ -255,6 +260,10 @@ function validateDate(box) {
 function validateDateDiff(dateA, dateB) {
 	var compDateA = dateCreate(dateA);
 	var compDateB = dateCreate(dateB);
+	var resourceType = document.getElementById('room_type');
+	
+	if (resourceType.selectedIndex == 0) {
+	
 	if (compDateA >= compDateB) {
 		var errLabel = document.getElementById('depart_date_error');
 		errLabel.textContent = "Please allow for at least 24hrs between Arrival and Departure";
@@ -262,7 +271,22 @@ function validateDateDiff(dateA, dateB) {
 		return 1;
 	} else {
 		return 0;
+		}
+
+	} else {
+		
+		if (compDateA > compDateB) {
+		var errLabel = document.getElementById('depart_date_error');
+		errLabel.textContent = "Please allow for at least 24hrs between Arrival and Departure";
+		errLabel.style.visibility = 'visible';
+		return 1;
+	} else {
+		return 0;
+		}
+		
+		
 	}
+
 }
 
 function validateTime(box) {
@@ -390,4 +414,8 @@ function sizeOptChange(box) {
 			boxChange.options[boxChange.options.length] = new Option(objectsA[index], index);
 		}
 	}
+	
+	var errLabel = document.getElementById('depart_date_error');
+		errLabel.textContent = "";
+		errLabel.style.visibility = 'hidden';
 }
