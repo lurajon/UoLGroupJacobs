@@ -2,9 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!-- ZM: please do not forget to change page title -->
-<title>UoL Hotel : Room Reservation Form</title>
-<!-- //ZM -->
+<title>UoL Hotel : Reservation Form</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
@@ -75,20 +73,37 @@
     <div class="w620 zero_margL">
       <div id="big_slider_holder" class="image_slider">
         <div id="big_slider_text" class="img_overlay large_color1">&nbsp;</div>
-        <!--<div class="image_slider" style="background-image: url(images/seasons-conference.jpg)" onclick="location.href='confrooms.html'">
-        <div class="img_overlay large_color1">Host your events in our Conference Rooms</div> --> 
       </div>
     </div>
     <div class="clear pad_bot_20"></div>
     <div class="w620 zero_margL">
       <div class="header_holder"> 
         <!-- ZM: enter your content header within <h1> element -->
-        <h1>Room Reservation Form</h1>
+        <h1>Reservation Form</h1>
         <!-- // ZM --> 
       </div>
       <!-- ZM: please use space below to add your page contents -->
-      <form id="room_reservation" action="room_confirmation.html" method="get" class="reservation_form" onsubmit="return validateFormOnSubmit(this)">
-        <!-- ZM: GET method used temporarely as server limits use of POST when submiting form to static HTML -->
+      <div class="pad_all_10 marg_left_10">
+        <table width="100%" border="0" class="confirmation_table">
+          <tr>
+            <td width="30%">Date of Arrival:</td>
+            <td><strong>$_POST from Availability Form</strong></td>
+          </tr>
+          <tr>
+            <td>Date of Departure:</td>
+            <td><strong>$_POST from Availability Form</strong></td>
+          </tr>
+          <tr>
+            <td>Accommodation:</td>
+            <td><strong>$_POST from Availability Form</strong></td>
+          </tr>
+          <tr>
+            <td>Rate per Day:</td>
+            <td><strong>$_POST from Availability Form</strong></td>
+          </tr>
+        </table>
+      </div>
+      <form id="reservation" action="" method="post" class="reservation_form" onsubmit="return validateFormOnSubmit(this)">
         <fieldset>
           <legend class="hidden">Please enter required information</legend>
           <span id="customer_name_error" class="required"></span>
@@ -97,23 +112,12 @@
           <span id="customer_mail_error" class="required"></span>
           <label for="customer_mail">* Email:</label>
           <input name="customer_mail" type="text" id="customer_mail" value="" class="date_range"/>
-          <span id="arrive_date_error" class="required"></span>
-          <label for="arrive_date">* Date of Arrival:</label>
-          <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)"/>
-          <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'arrive_date')" style="float:left"><span class="icon ui-icon-calendar" ></span></div>
-          <span id="depart_date_error" class="required"></span>
-          <label for="depart_date">* Date of Departure:</label>
-          <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)"/>
-          <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'depart_date')" style="float:left"><span class="icon ui-icon-calendar" ></span></div>
-          <label for="room_size">Room Size:</label>
-          <select id="room_size" class="small_form_select">
-            <option value="1" selected="selected">Single Bed</option>
-            <option value="2">Double Bed</option>
-          </select>
+          <label for="customer_company">Company:</label>
+          <input name="customer_company" type="text" id="customer_company" value="" class="date_range"/>
           <label for="customer_message">Message:</label>
           <textarea name="customer_message" cols="37" rows="6" id="customer_message"></textarea>
           <label for="reservation_check"></label>
-          <input id="reservation_check" type="submit" name="reservation_check" value="Check Availability" class="date_range marg_top_10" />
+          <input id="reservation_check" type="submit" name="reservation_check" value="Make Reservation" class="date_range marg_top_10" />
         </fieldset>
       </form>
       <!-- //ZM --> 

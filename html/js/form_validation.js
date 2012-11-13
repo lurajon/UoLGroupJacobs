@@ -5,7 +5,7 @@
  */
 function validateFormOnSubmit(whichForm) {
 	var errorCounter = 0;
-	if (whichForm.id == "room_reservation") {
+	/*if (whichForm.id == "room_reservation") {
 		errorCounter += validateName(whichForm.customer_name);
 		errorCounter += validateEmail(whichForm.customer_mail);
 		errorCounter += validateDate(whichForm.arrive_date);
@@ -19,6 +19,10 @@ function validateFormOnSubmit(whichForm) {
 		errorCounter += validateTime(whichForm.conf_start);
 		errorCounter += validateTime(whichForm.conf_end);
 		if (errorCounter === 0) errorCounter += validateTimeDiff(whichForm.conf_start, whichForm.conf_end);
+	}*/
+	if (whichForm.id == "reservation") {
+		errorCounter += validateName(whichForm.customer_name);
+		errorCounter += validateEmail(whichForm.customer_mail);
 	}
 	if (whichForm.id == "availability_check") {
 		errorCounter += validateDate(whichForm.arrive_date);
