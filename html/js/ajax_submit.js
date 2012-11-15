@@ -36,6 +36,31 @@ var Ajax = {
         }
     },
     
+    xmlHttpGet : function(url, async) {
+        var xhr = null;
+        
+        // check if it is an old IE version
+        if (window.ActiveXObject) {
+            // WARNING!!! NOT TESTED
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        } else {
+            xhr = new XMLHttpRequest();
+        }
+        
+        if (async) {
+            xhr.onreadystatechange=function() {
+                if (xmlxhrhttp.readyState==4 && xhr.status==200) {
+                    return xhr.responseText;
+                }
+            };
+        } 
+        
+        xhr.open('GET', url, async);
+        xhr.send(null);
+        
+        return xhr.responseText;
+	},
+    
     printResponse : function(outputElement, response) {
         outputElement.innerHTML = response;
     },
