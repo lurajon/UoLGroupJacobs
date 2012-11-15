@@ -24,7 +24,7 @@ function validateFormOnSubmit(whichForm) {
 		errorCounter += validateName(whichForm.customer_name);
 		errorCounter += validateEmail(whichForm.customer_mail);
 	}
-	if (whichForm.id == "availability_check") {
+	if (whichForm.id == "availability_check" || whichForm.id == "booking_form" ) {
 		errorCounter += validateDate(whichForm.arrive_date);
 		errorCounter += validateDate(whichForm.depart_date);
 		if (errorCounter === 0) errorCounter += validateDateDiff(whichForm.arrive_date, whichForm.depart_date);

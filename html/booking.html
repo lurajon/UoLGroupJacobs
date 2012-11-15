@@ -78,8 +78,6 @@
     <div class="w620 zero_margL">
       <div id="big_slider_holder" class="image_slider">
         <div id="big_slider_text" class="img_overlay large_color1">&nbsp;</div>
-        <!--<div class="image_slider" onclick="location.href='guestrooms.html'">
-        <div class="img_overlay large_color1">Luxury Guest Rooms</div> --> 
       </div>
     </div>
     <div class="clear pad_bot_20"></div>
@@ -89,15 +87,16 @@
         <h1>Check availability</h1>
         <!-- // ZM --> 
       </div>
-      <form action="availability.html" method="get" id="availability_check" onsubmit="return validateFormOnSubmit(this)">
+      <form action="availability.html" method="post" id="booking_form" class="reservation_form" onsubmit="return validateFormOnSubmit(this)">
         <fieldset>
-          <span id="arrive_date_error" class="required short"></span>
+        <legend class="hidden">Please enter required information</legend>
+          <span id="arrive_date_error" class="required"></span>
           <label>Arrival:</label>
           <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
           <div class="ui-button icon-only" style="float:left" onclick="datePicker.showCalendar(this, 'arrive_date')">
             <span class="icon ui-icon-calendar"></span>
           </div>
-          <span id="depart_date_error" class="required short"></span>
+          <span id="depart_date_error" class="required"></span>
           <label>Departure:</label>
           <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
           <div class="ui-button icon-only" style="float:left" onclick="datePicker.showCalendar(this, 'depart_date')">
