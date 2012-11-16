@@ -15,7 +15,7 @@
 		}
 		
 		private function getGuestbookEntriesWithStatus($status) {
-			
+			return $this->_guestbookModel->getGuestbookEntries($status);
 		}
 		
 		public function getPendingGuestbookEntries() {

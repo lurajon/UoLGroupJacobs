@@ -1,19 +1,21 @@
 <?php
 
 	include_once 'GuestbookEntry.php';
+	include_once '../connection/ConnectionFactory.php';
+	include_once '../connection/Connection.php';
 	
 	class GuestbookModel {
 		
-		function __construct() {
+		public function __construct() {
             
         }
 		
-		function getPendingGuestbookEntries() {
+		public function getGuestbookEntries($status) {
 			$connection = ConnectionFactory::getConnection('odbc');
 			
 			$dbCon = $connection->connect();
             
-            $dbResult = $connection->query($dbCon, 'select * from guestbook_entry where status_id = 0');
+            $dbResult = $connection->query($dbCon, 'select * from guestbook_entry where status_id = ' . $status);
             
             $guestbookEntries = Array();
             
@@ -42,6 +44,17 @@
             $connection->close($dbCon);
             
             return $guestbookEntries;
-		}	
+		}
+
+		public function addGuestbookEntry($entryDate, $entryAuthorName, $entryAuthorEmail, $entryTitle, $entryComment) {
+			$connection = ConnectionFactory::getConnection('odbc');
+			
+			$dbCon = $connection->connect();
+            
+            $dbResult = $connection->query($dbCon, 'insert into guestbook_entry (\'entry_date\',\'entry_title\',\'entry_comment\',\'entry_author_name\',\'entry_author_email\')'.
+				'values (\''. $entryDate .'\',\''. $entryTitle .'\',\''. $entryComment .'\',\''. $entryAuthorName .'\',\''. $entryAuthorEmail .'\')');
+			
+			return null;
+		}
 	}
 ?>

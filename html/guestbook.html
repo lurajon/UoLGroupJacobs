@@ -119,8 +119,9 @@
         <h1>Add a guestbook entry</h1>
         <!-- // ZM --> 
       </div>
-      <form id="guestbook_form" action="#" method="get" onsubmit="return validateFormOnSubmit(this)">
+      <form id="guestbook_form" action="code/guestbook/GuestbookController.php" method="post" onsubmit="return validateFormOnSubmit(this)">
         <div class="inner">
+        	<input type="hidden" name="action" value="add" id="action" />
           <div>
             <label for="name" class="required-field">Name:</label>
             <input type="text" value="" name="name" id="name" onfocus="errorOff(this)" />
@@ -134,31 +135,12 @@
             <div class="clear"></div>
           </div>
           <div>
-            <label for="age" class="required-field">Age:</label>
-            <input type="text" value="" name="age" id="age" onfocus="errorOff(this)" />
-            <span id="age_error" class="required"></span>
+            <label for="title" class="required-field">Title:</label>
+            <input type="text" value="" name="title" id="title" onfocus="errorOff(this)" />
+            <span id="title_error" class="required"></span>
             <div class="clear"></div>
           </div>
-          <div>
-            <label for="gender" class="required-field">Gender:</label>
-            <div>
-              <input type="radio" id="gender:male" name="gender" value="m" checked="checked" />
-              <label for="gender:male" class="radio">Male</label>
-              <input type="radio" id="gender:female" name="gender" value="f" />
-              <label for="gender:female" class="radio">Female</label>
-            </div>
-            <div class="clear"></div>
-          </div>
-          <div>
-            <label class="clear-width" class="required-field">
-            Purpose of visit:
-            </label>
-            <div class="clear"></div>
-          </div>
-          <div> <span id="purpose_error" class="required"></span> </div>
-          <div>
-            <textarea id="purpose" name="purpose" cols="40" rows="10" class="w100p borderBox" onfocus="errorOff(this)"></textarea>
-          </div>
+         
           <div>
             <label class="clear-width" class="required-field">
             Your comment:

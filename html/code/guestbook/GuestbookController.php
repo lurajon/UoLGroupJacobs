@@ -30,20 +30,32 @@
 			
 			$this->_guestbookView->getApprovedGuestbookEntriesJSON();
 		}
+		
+		public function addGuestbookEntry($name, $email, $title, $comment) {
+			$now = getdate();
+			$entryDate = $now['year'].'-'. $now['mon']. '-' .$now['mday']. ' '. $now['hours']. ':'. $now['minutes'];	
+			$guestbookEntry = $this->_guestbookModel->addGuestbookEntry($entryDate, $name, $email, $title, $comment);
+		}
 	}
 	
-	extract($_GET);
+	extract($_REQUEST);
+	
+	$guestbookModel = new GuestbookModel();
+	$guestbookController = new GuestbookController($guestbookModel);
+	$guestbookView = new GuestbookView($guestbookModel, $guestbookController);
+	$guestbookController->setGuestbookView($guestbookView);
 	
 	if (isset($list)) {
-		$guestbookModel = new GuestbookModel();
-		$guestbookController = new GuestbookController($guestbookModel);
-		$guestbookView = new GuestbookView($guestbookModel, $guestbookController);
-		$guestbookController->setGuestbookView($guestbookView);
 		
 		if (strcmp($list, 'pending')) {
 			$guestbookController->getPendingGuestbookEntries();
 		} else if (strcmp($list, 'approved')) {
 			$guestbookController->getApprovedGuestbookEntries();
+		}
+	} else if(isset($action)) {
+		
+		if (strcmp($action, 'add')) {
+			$guestbookController->addGuestbookEntry($name, $email, $title, $comment);
 		}
 	}
 ?>
