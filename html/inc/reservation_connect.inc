@@ -5,13 +5,8 @@
 
 	function openConnection() {
 
-		//$this -> dbSource = "Driver={Microsoft Access Driver (*.mdb)}; DBQ=c:\\users\\zmanowsky\\documents\\github\\uolgroupjacobs\\html\\db\\uol_hotel.mdb";
-		// local w8 mac
-		$this -> dbSource = "Driver={Microsoft Access Driver (*.mdb)}; DBQ=c:\\users\\zmc\\documents\\github\\uolgroupjacobs\\html\\db\\uol_hotel.mdb";
-		// local w8 work
-		//$this->dbSource = "Driver={Microsoft Access Driver (*.mdb)}; DBQ=c:\\inetpub\\uniroot\\db\\uol_hotel.mdb"; // firma
-		//  $this->$dbSource = "Driver={Microsoft Access Driver (*.mdb)}; DBQ=d:\\inetpub\\wwwroot\\projects\\group60\\db\\uol_hotel.mdb"; //student
-		//$this->$dbSource = "Driver=SQLite3 Driver;Database=/Users/zmanowsky/uol-group-jacobs/UoLGroupJacobs/html/db/uol_hotel.sqlite";
+		$this->$dbSource = "Driver={Microsoft Access Driver (*.mdb)}; DBQ=d:\\inetpub\\wwwroot\\projects\\group60\\db\\uol_hotel.mdb"; //student server db
+		
 		$this -> dbUser = "";
 		$this -> dbPassword = "";
 
