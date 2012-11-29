@@ -188,7 +188,7 @@
         <div class="header_holder booking">
           <h3>OnLine Reservations</h3>
         </div>
-        <form action="reservation.php" method="get" id="availability_check" onsubmit="validateFormOnSubmit(this)">
+        <form action="availability.html" method="get" id="availability_check" onsubmit="validateFormOnSubmit(this)">
           <fieldset>
             <span id="arrive_date_error" class="required short"></span>
             <label>Arrival:</label>

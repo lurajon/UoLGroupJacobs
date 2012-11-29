@@ -5,12 +5,26 @@
  */
 function validateFormOnSubmit(whichForm) {
 	var errorCounter = 0;
-
+	/*if (whichForm.id == "room_reservation") {
+		errorCounter += validateName(whichForm.customer_name);
+		errorCounter += validateEmail(whichForm.customer_mail);
+		errorCounter += validateDate(whichForm.arrive_date);
+		errorCounter += validateDate(whichForm.depart_date);
+		if (errorCounter === 0) errorCounter += validateDateDiff(whichForm.arrive_date, whichForm.depart_date);
+	}
+	if (whichForm.id == "confroom_reservation") {
+		errorCounter += validateName(whichForm.customer_name);
+		errorCounter += validateEmail(whichForm.customer_mail);
+		errorCounter += validateDate(whichForm.conf_date);
+		errorCounter += validateTime(whichForm.conf_start);
+		errorCounter += validateTime(whichForm.conf_end);
+		if (errorCounter === 0) errorCounter += validateTimeDiff(whichForm.conf_start, whichForm.conf_end);
+	}*/
 	if (whichForm.id == "reservation") {
 		errorCounter += validateName(whichForm.customer_name);
 		errorCounter += validateEmail(whichForm.customer_mail);
 	}
-	if (whichForm.id == "booking_form" ) {
+	if (whichForm.id == "availability_check" || whichForm.id == "booking_form" ) {
 		errorCounter += validateDate(whichForm.arrive_date);
 		errorCounter += validateDate(whichForm.depart_date);
 		if (errorCounter === 0) errorCounter += validateDateDiff(whichForm.arrive_date, whichForm.depart_date);
