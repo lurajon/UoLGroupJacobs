@@ -1,16 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?php
+
+if(!isset($_POST["reservation_check"]) || $_POST["reservation_check"]<>"Make Reservation"){
+	
+header("Location: booking.html");
+exit;	
+} else {
+
+include_once 'inc/reservation_model.inc';
+include_once 'inc/reservation_controller.inc';
+include_once 'inc/reservation_view.inc';
+
+$pageModel = new Model();
+$pageView = new View();
+$reservationController = new ReservationController($pageModel, $pageView);
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- ZM: please do not forget to change page title -->
-<title>UoL Hotel Booking</title>
+<title>UoL Hotel : Conference Room Reservation Form Processing</title>
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/image_slider.js"></script>
-<script type="text/javascript" src="js/form_validation.js"></script>
-<script type="text/javascript" src="js/datepicker.js"></script>
 </head>
 
 <body onload="image_slider();">
@@ -33,7 +47,7 @@
           <li><a href="guestrooms.html">Guest Rooms</a></li>
           <li><a href="confrooms.html">Conference Rooms</a></li>
           <li><a href="booking.html">Booking</a></li>
-          <li><a href="guestbook.php">Guestbook</a></li>
+          <li><a href="guestbook.html">Guestbook</a></li>
           <li><a href="contactus.html">Contact Us</a></li>
         </ul>
       </div>
@@ -41,8 +55,6 @@
   </div>
   <div class="clear pad_bot_10"></div>
   <div class="w300 bar_right">
-    <div class="w300 zero_margL"> </div>
-    <div class="clear pad_bot_5"></div>
     <div class="w300 zero_margL">
       <div class="confroom_link" onclick="location.href='confrooms.html'">
         <div class="img_overlay overlay_color1">Your events in our Conference Rooms</div>
@@ -84,38 +96,14 @@
     <div class="w620 zero_margL">
       <div class="header_holder"> 
         <!-- ZM: enter your content header within <h1> element -->
-        <h1>Check availability</h1>
+        <h1>Thank you for using OnLine Reservation System</h1>
         <!-- // ZM --> 
       </div>
-      <form action="reservation.php" method="post" id="booking_form" class="reservation_form" onsubmit="return validateFormOnSubmit(this)">
-        <fieldset>
-        <legend class="hidden">Please enter required information</legend>
-          <span id="arrive_date_error" class="required"></span>
-          <label>Arrival:</label>
-          <input name="arrive_date" type="text" id="arrive_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
-          <div class="ui-button icon-only" style="float:left" onclick="datePicker.showCalendar(this, 'arrive_date')">
-            <span class="icon ui-icon-calendar"></span>
-          </div>
-          <span id="depart_date_error" class="required"></span>
-          <label>Departure:</label>
-          <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
-          <div class="ui-button icon-only" style="float:left" onclick="datePicker.showCalendar(this, 'depart_date')">
-            <span class="icon ui-icon-calendar"></span>
-          </div>
-          <label>Room Type:</label>
-          <select name="room_type" id="room_type" class="small_form_select" onchange="sizeOptChange(this)">
-            <option value="1" selected="selected">Guest Room</option>
-            <option value="2">Conference Room</option>
-          </select>
-          <label>Room Size:</label>
-          <select name="room_size" id="room_size" class="small_form_select">
-            <option value="1" selected="selected">Single Bed</option>
-            <option value="2">Double Bed</option>
-          </select>
-          <label></label>
-          <input id="booking_check" type="submit" name="booking_check" value="Check Availability" class="date_range" />
-        </fieldset>
-      </form>
+      <!-- ZM: please use space below to add your page contents -->
+      <?php
+	$reservationController -> addReservation($_POST);
+      ?>
+      <!-- //ZM --> 
     </div>
   </div>
   <div class="clear pad_bot_20"></div>
@@ -128,5 +116,5 @@
   </div>
 </div>
 </body>
->>>>>>> master
 </html>
+<?php } ?>
