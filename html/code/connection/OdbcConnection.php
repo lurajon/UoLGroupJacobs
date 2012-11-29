@@ -5,7 +5,7 @@
     class OdbcConnection extends Connection {
     
         function connect() {
-        	return odbc_connect('Driver={Microsoft Access Driver (*.mdb)}; DBQ=d:\\inetpub\\wwwroot\\projects\\Sbb60\\jonelura\\dev\\db\\uol_hotel.mdb','',''); 
+        	return odbc_connect('Driver={Microsoft Access Driver (*.mdb)}; DBQ='. realpath("../../db/uol_hotel.mdb").';','',''); 
             //return odbc_connect('uol-odb', '', '');
         }
         

@@ -19,7 +19,6 @@
 			if(!isset($this->_guestbookView)) {
 				return;
 			}
-			
 			$this->_guestbookView->getPendingGuestbookEntriesJSON();
 		}
 		
@@ -32,9 +31,53 @@
 		}
 		
 		public function addGuestbookEntry($name, $email, $title, $comment) {
-			$now = getdate();
-			$entryDate = $now['year'].'-'. $now['mon']. '-' .$now['mday']. ' '. $now['hours']. ':'. $now['minutes'];	
-			$guestbookEntry = $this->_guestbookModel->addGuestbookEntry($entryDate, $name, $email, $title, $comment);
+			date_default_timezone_set('Europe/London'); 
+			$now = date('d/m/y H:i');
+			
+			$guestbookEntry = $this->_guestbookModel->addGuestbookEntry($now, $name, $email, $title, $comment);
+			$this->_guestbookView->printInfoMessage('Your entry has been submitted. It will be displayed when the entry has been approved');
+		}
+		
+		public function guestbookEntryDetails($entryId) {
+			header('Location: ../../adminpanel/guestbook/entryDetails.php?entryId='. $entryId);
+		}
+		
+		public function approveGuestbookEntry($entryId) {
+			$entryId = strip_tags($entryId);
+            $entryId = stripslashes($entryId);
+			
+			$entry = $this->_guestbookModel->getGuestbookEntry($entryId);
+			
+			if (!isset($entry)) {
+				$this->_guestbookView->printErrorMessage('Entry with id ' . $entryId .' does not exist');
+				return;
+			}
+			
+			$this->_guestbookModel->updateStatus($entryId, 1);
+			$this->_guestbookView->printInfoMessage('Entry approved');
+		}
+		
+		public function disableGuestbookEntry($entryId) {
+			$entryId = strip_tags($entryId);
+            $entryId = stripslashes($entryId);
+			
+			$entry = $this->_guestbookModel->getGuestbookEntry($entryId);
+			
+			if (!isset($entry)) {
+				$this->_guestbookView->printErrorMessage('Entry with id ' . $entryId .' does not exist');
+				return;
+			}
+			
+			$this->_guestbookModel->updateStatus($entryId, -1);
+			$this->_guestbookView->printInfoMessage('Entry deleted');
+		}
+
+		public function getPendingGuestbookEntriesCount() {
+			$this->_guestbookView->getPendingGuestbookEntriesCountJSON();
+		}
+		
+		public function searchGuestbookEntries($searchValue) {
+			$this->_guestbookView->getGuestbookEntriesJSON($searchValue);
 		}
 	}
 	
@@ -47,15 +90,31 @@
 	
 	if (isset($list)) {
 		
-		if (strcmp($list, 'pending')) {
+		if (strcmp($list, 'pending') == 0) {
 			$guestbookController->getPendingGuestbookEntries();
-		} else if (strcmp($list, 'approved')) {
+		} elseif (strcmp($list, 'approved') == 0) {
 			$guestbookController->getApprovedGuestbookEntries();
 		}
-	} else if(isset($action)) {
-		
-		if (strcmp($action, 'add')) {
+	} elseif(isset($action)) {
+		if (strcmp($action, 'add') == 0) {
 			$guestbookController->addGuestbookEntry($name, $email, $title, $comment);
+		} elseif (strcmp($action,'details') == 0) {
+			$guestbookController->guestbookEntryDetails($entryId);
+		}
+	} elseif (isset($operation)) {
+		if (strcmp($operation, 'post') == 0) {
+			$guestbookController->approveGuestbookEntry($entryId);
+		} elseif (strcmp($operation, 'delete') == 0) {
+			$guestbookController->disableGuestbookEntry($entryId);
+		} 
+	} elseif (isset($info)) {
+		if (strcmp($info, 'pendingCount') == 0) {
+			$guestbookController->getPendingGuestbookEntriesCount();
+		}
+	} elseif (isset($search)) {
+		if (strcmp($search, 'Search') == 0) {
+			$guestbookController->searchGuestbookEntries($searchValue);
 		}
 	}
+	
 ?>

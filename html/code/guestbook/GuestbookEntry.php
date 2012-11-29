@@ -81,17 +81,23 @@
 			return $this->_entryAuthorEmail;
 		}
 		
+		function getEntryAuthoEmailAsHashcode() {
+			return md5( strtolower( trim( $this->getEntryAuthorEmail() ) ) );
+			
+		}
+		
 		function setEntryAuthorEmail($entryAuthorEmail) {
 			$this->_entryAuthorEmail = $entryAuthorEmail;
 		}
 		
 		function getJSON() {
-			return '{ "guestbookEntry" { "entryId": "'. $this->getEntryId().'",'.
+			return '{ "guestbookEntry" : { "entryId": "'. $this->getEntryId().'",'.
 			 '"entryTitle": "'. $this->getEntryTitle().'",'.
 			 '"entryDate": "'. $this->getEntryDate().'",'.
 			 '"entryComment": "'. $this->getEntryComment().'",'.
 			 '"entryAuthorName": "'. $this->getEntryAuthorName().'",'.
 			 '"entryAuthorEmail": "'. $this->getEntryAuthorEmail().'",'.
+			 '"entryAuthorEmailHash": "'. $this->getEntryAuthoEmailAsHashcode().'",'.
 			 '"userId": "'. $this->getUserId().'",'.
 			 '"statusId": "'. $this->getStatusId().'"}}';
 		}

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -11,54 +10,136 @@
 
 	function loadGuestbookEntries() {
 		loadPendingEntries();
+		loadApprovedEntries();
 	}
 	
 	function buildGuestbookList(outputElement, guestbookListObj) {
+		var tableBody = document.getElementById(outputElement);
+		tableBody.innerHTML = '';
+		
+		for (var index in guestbookListObj.guestbookEntries) {
+			var entry = guestbookListObj.guestbookEntries[index];
+			createRow(tableBody, entry.guestbookEntry);
+		}
+	}
+	
+	function createRow(tableBody, guestbookEntry) {
+				
+		var row = document.createElement('tr');
+		var title = document.createElement('td');
+		title.innerHTML = guestbookEntry.entryTitle;
+		
+		var author = document.createElement('td');
+		author.innerHTML = guestbookEntry.entryAuthorName;
+		var posted = document.createElement('td');
+		posted.innerHTML = guestbookEntry.entryDate;
+		
+		var details = document.createElement('td');
+		var detailsLink = document.createElement('a');
+		detailsLink.href = '../../code/guestbook/GuestbookController.php?action=details&entryId=' + guestbookEntry.entryId;
+		detailsLink.innerHTML = 'Details';
+		
+		row.appendChild(title);
+		row.appendChild(author);
+		row.appendChild(posted);
+		
+		details.appendChild(detailsLink);
+		row.appendChild(details);
+		
+		tableBody.appendChild(row);
 		
 	}
 	
 	function buildEmptyList(outputElement, msgObj) {
+		
+		buildMessageRow(outputElement, msgObj.message.content);
+		
+	}
+	
+	function buildMessageRow(outputElement, message) {
 		var tableBody = document.getElementById(outputElement);
 		tableBody.innerHTML = '';
 		
 		var row = document.createElement('tr');
 		var cell = document.createElement('td');
 		cell.colSpan = '4';
-		cell.innerHTML = msgObj.message.content;
+		cell.innerHTML = message;
 		row.appendChild(cell);
 		tableBody.appendChild(row);
 	}
 	
 	function loadPendingEntries() {
-		var response = Ajax.xmlHttpGet('../../code/guestbook/GuestbookController.php?list=pending');
-		window.alert(response);
-		var jsonObj = JSON.parse(response);
-        
-       	if (jsonObj == null) {
-        	return;
+		var response = Ajax.xmlHttpGet('../../code/guestbook/GuestbookController.php?list=pending', false);
+		
+		if (response == null || response.length == 0) {
+			return;
+		}
+		
+		try {
+			var jsonObj = JSON.parse(response);
+			
+			if (jsonObj.message != null) {
+        		buildEmptyList('pendingTableBody', jsonObj);
+        	} else if (jsonObj.guestbookEntries != null) {
+        		buildGuestbookList('pendingTableBody', jsonObj);
+        	}
+        } catch(e) {
+        	buildMessageRow('pendingTableBody', "Failed to retrieve list: " + e);
         }
         
-        if (jsonObj.message != null) {
-        	buildEmptyList('pendingTableBody', jsonObj);
-        } else if (jsonObj.guestbookList != null) {
-        	buildGuestbookList('pendingTableBody', jsonObj);
-        }
 	}
 	
 	function loadApprovedEntries() {
-		var response = Ajax.xmlHttpGet('../../code/guestbook/GuestbookController.php?list=approved');
+		var response = Ajax.xmlHttpGet('../../code/guestbook/GuestbookController.php?list=approved', false);
 		
+		try {
 		var jsonObj = JSON.parse(response);
         
-       	if (jsonObj == null) {
-        	return;
+        	if (jsonObj.message != null) {
+        		buildEmptyList('approvedTableBody', jsonObj);
+        	} else if (jsonObj.guestbookEntries != null) {
+        		buildGuestbookList('approvedTableBody', jsonObj);
+        	}
+        } catch(e) {
+        	buildMessageRow('approvedTableBody',"Failed to retrieve list: " + e);
         }
         
-        if (jsonObj.message != null) {
-        	buildEmptyList('approvedTableBody', jsonObj);
-        } else if (jsonObj.guestbookList != null) {
-        	buildGuestbookList('approvedTableBody', jsonObj);
+	}
+	
+	function searchEntries(form) {
+		var response = Ajax.xmlHttpPost('../../code/guestbook/GuestbookController.php', form, false);
+		
+		try {
+			var jsonObj = JSON.parse(response);
+        
+        	if (jsonObj.message != null) {
+        		buildEmptyList('approvedTableBody', jsonObj);
+        		buildEmptyList('pendingTableBody', jsonObj);
+        	} else if (jsonObj.guestbookEntries != null) {
+        		buildGuestbookResultList(jsonObj);
+        	}
+        } catch(e) {
+        	buildMessageRow('approvedTableBody',"Failed to retrieve list: " + e);
+        	buildMessageRow('pendingTableBody',"Failed to retrieve list: " + e);
         }
+	}
+	
+	function buildGuestbookResultList(jsonObj) {
+		var pendingTableBody = document.getElementById('pendingTableBody');
+		pendingTableBody.innerHTML = '';
+		
+		var approvedTableBody = document.getElementById('approvedTableBody');
+		approvedTableBody.innerHTML = '';
+		
+		for (var index in jsonObj.guestbookEntries) {
+			var entry = jsonObj.guestbookEntries[index];
+			
+			if (entry.guestbookEntry.statusId == 0) {
+				createRow(pendingTableBody, entry.guestbookEntry);
+			} else {
+				createRow(approvedTableBody, entry.guestbookEntry);
+			}
+		}
 	}
 	
 </script>
@@ -91,8 +172,9 @@
    <!-- Content -->
   <div class="w940">
     <div id="search">
-        <form action="#">
-            <input id="searchValue" type="text" name="searchValue" value="" /><input type="submit" value="Search" />
+        <form action="#" id="searchForm" onsubmit="searchEntries(this);return false;">
+            <input id="searchValue" type="text" name="searchValue" value="" />
+            <input type="submit" value="Search" name="search" />
         </form>
     </div>
     
@@ -111,13 +193,8 @@
                     <th>Options</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>{guestBookEntry.title}</td>
-                    <td>{guestBookEntry.postedBy}</td>
-                    <td>{guestBookEntry.postedDate}</td>
-                    <td><a href="entryDetails.html?entryId={entry.entryId}">Details</a></td>
-                </tr>
+            <tbody id="pendingTableBody">
+                
             </tbody>
         </table>    
       <!-- //JL -->
@@ -140,13 +217,8 @@
                     <th>Options</th>
                 </tr>
             </thead>
-            <tbody id="pendingTableBody">
-                <tr>
-                    <td>{guestBookEntry.title}</td>
-                    <td>{guestBookEntry.postedBy}</td>
-                    <td>{guestBookEntry.postedDate}</td>
-                    <td><a href="entryDetails.html?entryId={entry.entryId}">Details</a></td>
-                </tr>
+            <tbody id="approvedTableBody">
+               
             </tbody>
         </table>    
       <!-- //JL -->
