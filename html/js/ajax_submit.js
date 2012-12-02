@@ -1,7 +1,6 @@
 var Ajax = {
     
-    xmlHttpPost : function (url, form, outputElementId, async) {
-        var outputElement = document.getElementById(outputElementId);
+    xmlHttpPost : function (url, form, async) {
         
         // default async if not defined
         if (!async) {
@@ -23,8 +22,8 @@ var Ajax = {
         
         if (async) {
             xhr.onreadystatechange=function() {
-                if (xmlxhrhttp.readyState==4 && xhr.status==200) {
-                    this.printResponse(outputElement, xhr.responseText);
+                if (xhr.readyState==4 && xhr.status==200) {
+                    return xhr.responseText;
                 }
             };
         } 
@@ -32,9 +31,34 @@ var Ajax = {
         xhr.send(this.buildQueryString(form));
         
         if (!async) {
-            this.printResponse(outputElement, xhr.responseText);
+            return xhr.responseText;
         }
     },
+    
+    xmlHttpGet : function(url, async) {
+        var xhr = null;
+        
+        // check if it is an old IE version
+        if (window.ActiveXObject) {
+            // WARNING!!! NOT TESTED
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        } else {
+            xhr = new XMLHttpRequest();
+        }
+        
+        if (async) {
+            xhr.onreadystatechange=function() {
+                if (xhr.readyState==4 && xhr.status==200) {
+                    return xhr.responseText;
+                }
+            };
+        } 
+        
+        xhr.open('GET', url, async);
+        xhr.send();
+        
+        return xhr.responseText;
+	},
     
     printResponse : function(outputElement, response) {
         outputElement.innerHTML = response;

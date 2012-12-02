@@ -50,9 +50,8 @@ function validateGuestBookForm(form) {
 	var errorCounter = 0;
 	errorCounter += validateName(form.name);
 	errorCounter += validateEmail(form.email);
-	errorCounter += validateAge(form.age);
-	errorCounter += validateName(form.purpose);
-	errorCounter += validateName(form.comment);
+	errorCounter += validateDefault(form.title);
+	errorCounter += validateDefault(form.comment);
 	
 	return errorCounter;
 }

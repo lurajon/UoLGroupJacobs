@@ -166,7 +166,7 @@ form div.inner .required, form fieldset.inner .required {
 	position: relative;
 }
 
-.message.success {
+.message.success, .message.info {
 	background: #e3e8f4;
 	box-shadow: 0 0 5px #e3e8f4;
 	-moz-box-shadow: 0 0 5px #e3e8f4;
@@ -174,7 +174,7 @@ form div.inner .required, form fieldset.inner .required {
 	border: 1px solid #d3ddf6;
 }
 
-.message.success span.icon {
+.message.success span.icon, .message.info span.icon {
 	background: url(../images/icons/ui-icons_0033cc_256x240.png) no-repeat -16px -144px;
 }
 
@@ -208,4 +208,31 @@ form div.inner .required, form fieldset.inner .required {
 
 .ui-icon-calendar {
 	background-position: -34px -114px;
+}
+
+/* guestbook styles */
+
+.entry {
+	margin-bottom: 10px;
+}
+.entry .entry-hdr {
+    background: url("../images/bubble.png") no-repeat scroll 10px 20px transparent;
+    padding: 0 0 10px;
+}
+
+.entry .entry-bdy {
+	background: #e3e8f4;
+	padding: 10px;
+	
+}
+
+.entry .profile {
+    border-right: 1px solid #c2d0f1;
+    float: left;
+    width: 90px;
+}
+
+.entry .comment {
+    float: left;
+    padding: 0 10px;
 }
