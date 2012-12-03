@@ -77,10 +77,13 @@ function validateUserDetailsForm(form) {
 	errorCounter += validateName(form.firstname);
 	errorCounter += validateName(form.lastname);
 	errorCounter += validateEmail(form.email);
-	errorCounter += validatePassword(form.password);
 	
-	if (errorCounter === 0) {
-		errorCounter += validateEqualPasswords(form.password, form.retype_password);
+	if (form.validatePassword.value == 'true') {
+		errorCounter += validatePassword(form.password);
+	
+		if (errorCounter === 0) {
+			errorCounter += validateEqualPasswords(form.password, form.confirm);
+		}
 	}
 	
 	return errorCounter;

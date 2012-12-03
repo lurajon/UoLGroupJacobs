@@ -236,3 +236,11 @@ form div.inner .required, form fieldset.inner .required {
     float: left;
     padding: 0 10px;
 }
+
+input.hidden {
+	visibility: hidden;
+	height: 0;
+	width: 0;
+	margin: 0!important;
+	padding:0 !important;
+}

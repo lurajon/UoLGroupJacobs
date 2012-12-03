@@ -1,5 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php
+	echo('<?xml version="1.0" encoding="UTF-8"?>');
+	
+	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'code'. DIRECTORY_SEPARATOR.'usermanagement'. DIRECTORY_SEPARATOR.'UserManagementController.php';
+	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'code'. DIRECTORY_SEPARATOR.'usermanagement'. DIRECTORY_SEPARATOR.'UserManagementModel.php';
+	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. '..'. DIRECTORY_SEPARATOR.'..'. DIRECTORY_SEPARATOR.'code'. DIRECTORY_SEPARATOR.'usermanagement'. DIRECTORY_SEPARATOR. 'User.php';
+	
+	
+	$userManagementModel = new UserManagementModel();
+	$userManagementController = new UserManagementController($userManagementModel);
+	$userManagementView = new UserManagementView($userManagementController, $userManagementModel);
+	$userManagementController->setUserManagementView($userManagementView);
+	
+    $actionName = 'created';
+	
+	$username = '';
+	$firstname = '';
+	$lastname = '';
+	$email = '';
+	
+	if (isset($_GET)) {
+        extract($_GET);
+        
+        if ($actionComplete == 'edit') {
+        	$actionName = 'edited';
+        }
+            
+        $currentUser = $userManagementView->getUserByUsername($username);
+        $firstname = $currentUser->getFirstName();
+	    $lastname = $currentUser->getLastName();
+		$email = $currentUser->getEmail();
+        
+    }
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -66,20 +98,20 @@
        <!-- // JL -->
       </div>
       <!-- JL: please use space below to add your page contents -->
-        <div class="margin_top_10">You have created/edited the user {user.username} with the following details</div>
+        <div class="margin_top_10">You have <?php echo($actionName) ?> the user <?php echo($username) ?> with the following details</div>
         <table class="margin_top_10">
             <tbody>
               <tr>
                 <td>First Name:</td>
-                <td>{user.firstName}</td>
+                <td><?php echo($firstname) ?></td>
               </tr>
               <tr>
                 <td>Last Name:</td>
-                <td>{user.lastName}</td>
+                <td><?php echo($lastname) ?></td>
               </tr>
               <tr>
                 <td>E-Mail</td>
-                <td>{user.eMail}</td>
+                <td><?php echo($email) ?></td>
               </tr>
             </tbody>
         </table>

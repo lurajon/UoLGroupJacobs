@@ -6,9 +6,107 @@
 <title>Welcome to UoL Hotel</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="../../css/admin-styles.css" rel="stylesheet" type="text/css" />
+<script src="../../js/ajax_submit.js" type="text/javascript"></script>
+<script type="text/javascript" >
+
+	function loadUsers() {
+		var response = Ajax.xmlHttpGet('../../code/usermanagement/UserManagementController.php?list=all', false);
+		
+		if (response == null || response.length == 0) {
+			return;
+		}
+		
+		try {
+			var jsonObj = JSON.parse(response);
+			
+			if (jsonObj.message != null) {
+        		buildEmptyList('usersTableBody', jsonObj);
+        	} else if (jsonObj.users != null) {
+        		buildUserList('usersTableBody', jsonObj);
+        	}
+        } catch(e) {
+        	buildMessageRow('usersTableBody', "Failed to retrieve list: " + e);
+        }
+	}
+	
+	function buildUserList(outputElement, userJsonObj) {
+		var tableBody = document.getElementById(outputElement);
+		tableBody.innerHTML = '';
+		
+		for (var index in userJsonObj.users) {
+			var user = userJsonObj.users[index];
+			createRow(tableBody, user.user);
+		}
+	}
+	
+	function createRow(tableBody, user) {
+				
+		var row = document.createElement('tr');
+		var username = document.createElement('td');
+		username.innerHTML = user.username;
+		
+		var firstName = document.createElement('td');
+		firstName.innerHTML = user.firstName;
+		var lastName = document.createElement('td');
+		lastName.innerHTML = user.lastName;
+		
+		var email = document.createElement('td');
+		email.innerHTML = user.email;
+		
+		var options = document.createElement('td');
+		var optionsLink = document.createElement('a');
+		optionsLink.href = 'userDetails.php?action=edit&userId=' + user.userId;
+		optionsLink.innerHTML = 'Edit';
+		
+		row.appendChild(username);
+		row.appendChild(firstName);
+		row.appendChild(lastName);
+		row.appendChild(email);
+		
+		options.appendChild(optionsLink);
+		row.appendChild(options);
+		
+		tableBody.appendChild(row);
+		
+	}
+	
+	function buildEmptyList(outputElement, msgObj) {
+		
+		buildMessageRow(outputElement, msgObj.message.content);
+		
+	}
+	
+	function buildMessageRow(outputElement, message) {
+		var tableBody = document.getElementById(outputElement);
+		tableBody.innerHTML = '';
+		
+		var row = document.createElement('tr');
+		var cell = document.createElement('td');
+		cell.colSpan = '5';
+		cell.innerHTML = message;
+		row.appendChild(cell);
+		tableBody.appendChild(row);
+	}
+	
+	function searchUsers(form) {
+		var response = Ajax.xmlHttpPost('../../code/usermanagement/UserManagementController.php', form, false);
+		
+		try {
+			var jsonObj = JSON.parse(response);
+        
+        	if (jsonObj.message != null) {
+        		buildEmptyList('usersTableBody', jsonObj);
+        	} else if (jsonObj.users != null) {
+        		buildUserList('usersTableBody',jsonObj);
+        	}
+        } catch(e) {
+        	buildMessageRow('usersTableBody',"Failed to retrieve list: " + e);
+        }
+	}
+</script>
 </head>
 
-<body class="admin">
+<body class="admin" onload="loadUsers()">
 <div class="holder">
   <div class="w140 pad_left_800">
     <div class="member_entry">Admnistration</div>
@@ -35,14 +133,14 @@
    <!-- Content -->
   <div class="w940">
     <div id="search">
-        <form action="#">
-            <input id="searchValue" type="text" name="searchValue" value="" /><input type="submit" value="Search" />
+        <form action="#" method="post" onsubmit="searchUsers(this);return false;">
+            <input id="searchValue" type="text" name="searchValue" value="" /><input type="submit" value="Search" id="search" name="search" />
         </form>
     </div>
     
     <div class="header_holder margin_top_10">
       <!-- JL: enter your content header within <h1> element -->
-        <h1><span>Available users</span><span class="link"><a href="userDetails.html?action=add">New User</a></span></h1>
+        <h1><span>Available users</span><span class="link"><a href="userDetails.php?action=add">New User</a></span></h1>
        <!-- // JL -->
       </div>
       <!-- JL: please use space below to add your page contents -->
@@ -56,14 +154,8 @@
                     <th>Options</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>{user.username}</td>
-                    <td>{user.firstName}</td>
-                    <td>{user.lastName}</td>
-                    <td>{user.eMail}</td>
-                    <td><a href="userDetails.html?action=edit&userId={user.userId}">Edit</a></td>
-                </tr>
+            <tbody id="usersTableBody">
+               
             </tbody>
         </table>    
       <!-- //JL -->
