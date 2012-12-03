@@ -4,12 +4,11 @@
 	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookController.php';
 	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookModel.php';
 	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookEntry.php';
+	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. '..'. DIRECTORY_SEPARATOR.'common'. DIRECTORY_SEPARATOR. 'AbstractView.php';
 
-	class GuestbookView {
+	class GuestbookView extends AbstractView {
 		private $_guestbookModel;
 		private $_guestbookController;
-		
-		private $_message;
 		
 		public function __construct($model, $controller) {
 			$this->_guestbookController = $controller;
@@ -71,7 +70,7 @@
 			
 			if(empty($entries)) {
 				$this->setErrorMessage('There are no guestbook entries');
-     			return $this->_message;
+     			return $this->getMessage();
 			}
 			
 			$output = '{ "guestbookEntries" : [';
@@ -90,30 +89,6 @@
 			$output = $output . ']}';
 			
 			return $output;
-		}
-		
-		function printMessage() {
-            print $this->_message;
-        }
-        
-        function setErrorMessage($errorMessage) {
-            $this->_message = '{ "message": { "type": "error", "content": "'. $errorMessage.'" } }';
-           
-        }
-        
-        function setInfoMessage($infoMessage) {
-            $this->_message = '{ "message": { "type": "info", "content": "'. $infoMessage.'"} }';
-            
-        }
-		
-		function printInfoMessage($infoMessage) {
-			$this->setInfoMessage($infoMessage);
-			$this->printMessage();
-		}
-		
-		function printErrorMessage($infoMessage) {
-			$this->setErrorMessage($infoMessage);
-			$this->printMessage();
 		}
 		
 		function printEntryRow($entry) {

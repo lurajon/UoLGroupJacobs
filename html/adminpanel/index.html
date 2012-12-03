@@ -22,10 +22,30 @@
         	output.innerHTML = "Failed to retrieve list: " + e;
         }
 	}
+	
+	function getUserCount() {
+		var response = Ajax.xmlHttpGet('../code/usermanagement/UserManagementController.php?info=count', false);
+		var output = document.getElementById('userCount');
+		
+		try {
+		var jsonObj = JSON.parse(response);
+        
+        	if (jsonObj.usersInfo != null) {
+        		output.innerHTML = jsonObj.usersInfo.count;
+        	}
+        } catch(e) {
+        	output.innerHTML = "Failed to retrieve list: " + e;
+        }
+	}
+	
+	function loadInfo() {
+		getPendingGuestbookEntries();
+		getUserCount();
+	}
 </script>
 </head>
 
-<body class="admin" onload="getPendingGuestbookEntries()">
+<body class="admin" onload="loadInfo();">
 <div class="holder">
   <div class="w140 pad_left_800">
     <div class="member_entry">Admnistration</div>
@@ -55,7 +75,7 @@
             <tbody>
               <tr>
                 <td>Number of users</td>
-                <td>{numberOfUsers}</td>
+                <td><span id="userCount"></span></td>
                 <td><a href="user/users.html">User Management</a></td>
               </tr>
               <tr>

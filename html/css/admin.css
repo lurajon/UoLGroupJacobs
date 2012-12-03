@@ -89,9 +89,13 @@
 }
 
 .admin .required {
-    float:none;
     clear: none;
     margin-left: 5px;
+}
+
+.admin .info-field {
+    float: left;
+    margin-top: 3px;
 }
 
 .admin .ui-calendar table tr td, .admin .ui-calendar table tr th {
