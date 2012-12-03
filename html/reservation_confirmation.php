@@ -20,7 +20,7 @@ $reservationController = new ReservationController($pageModel, $pageView);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- ZM: please do not forget to change page title -->
-<title>UoL Hotel : Conference Room Reservation Form Processing</title>
+<title>UoL Hotel : Reservation Form Processing</title>
 <!-- //ZM -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz:200,400' rel='stylesheet' type='text/css' />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
