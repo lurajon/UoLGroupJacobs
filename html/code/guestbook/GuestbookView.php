@@ -1,15 +1,17 @@
 <?php
 
 	
+	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. '..'. DIRECTORY_SEPARATOR.'common'. DIRECTORY_SEPARATOR. 'AbstractView.php';
 	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookController.php';
 	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookModel.php';
 	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookEntry.php';
-	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. '..'. DIRECTORY_SEPARATOR.'common'. DIRECTORY_SEPARATOR. 'AbstractView.php';
-
-	class GuestbookView extends AbstractView {
+	
+	class GuestbookView {
 		private $_guestbookModel;
 		private $_guestbookController;
 		
+		private $_message;
+	
 		public function __construct($model, $controller) {
 			$this->_guestbookController = $controller;
 			$this->_guestbookModel = $model;
@@ -118,6 +120,38 @@
 			$count = $this->_guestbookModel->getPendingGuestbookEntriesCount();
 			
 			echo('{ "guestbookInfo": { "count": "'. $count.'"} }');
+		}
+	
+		public function setMessage($message) {
+			$this->_message = $message;
+		}
+		
+		public function getMessage() {
+			return $this->_message;
+		}
+		
+		function printMessage() {
+            print $this->getMessage();
+        }
+        
+        function setErrorMessage($errorMessage) {
+            $this->setMessage('{ "message": { "type": "error", "content": "'. $errorMessage.'" } }');
+           
+        }
+        
+        function setInfoMessage($infoMessage) {
+            $this->setMessage('{ "message": { "type": "info", "content": "'. $infoMessage.'"} }');
+            
+        }
+		
+		function printInfoMessage($infoMessage) {
+			$this->setInfoMessage($infoMessage);
+			$this->printMessage();
+		}
+		
+		function printErrorMessage($infoMessage) {
+			$this->setErrorMessage($infoMessage);
+			$this->printMessage();
 		}
 	}
 ?>

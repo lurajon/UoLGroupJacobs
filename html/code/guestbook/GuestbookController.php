@@ -1,7 +1,7 @@
 <?php
 
-	include_once 'GuestbookModel.php';
-	include_once 'GuestbookView.php';
+	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookView.php';
+	include_once dirname(__FILE__) . DIRECTORY_SEPARATOR. 'GuestbookModel.php';
 
 	class GuestbookController {
 		private $_guestbookView;
