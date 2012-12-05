@@ -60,12 +60,12 @@
             <input name="depart_date" type="text" id="depart_date" value="dd/mm/yyyy" class="date_range" onfocus="delIntContent(this)" onblur="intContent(this)" />
             <div class="ui-button icon-only" onclick="datePicker.showCalendar(this, 'depart_date')"><span class="icon ui-icon-calendar" ></span></div>
             <label>Room Type:</label>
-            <select id="room_type" class="small_form_select" onchange="sizeOptChange(this)">
+            <select name="room_type" id="room_type" class="small_form_select" onchange="sizeOptChange(this)">
               <option value="1" selected="selected">Guest Room</option>
               <option value="2">Conference Room</option>
             </select>
             <label>Room Size:</label>
-            <select id="room_size" class="small_form_select">
+            <select name="room_size" id="room_size" class="small_form_select">
               <option value="1" selected="selected">Single Bed</option>
               <option value="2">Double Bed</option>
             </select>
