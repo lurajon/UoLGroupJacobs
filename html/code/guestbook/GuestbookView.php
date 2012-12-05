@@ -32,7 +32,7 @@
 		}
 		
 		public function getPendingGuestbookEntries() {
-			return $this->getGuestbookEntriesWithStatus(0, FALSE);
+			return $this->getGuestbookEntriesWithStatus(1, FALSE);
 		}
 		
 		public function getPendingGuestbookEntriesJSON() {
@@ -42,7 +42,7 @@
 		}
 		
 		public function getApprovedGuestbookEntries($reverse) {
-			return $this->getGuestbookEntriesWithStatus(1, $reverse);
+			return $this->getGuestbookEntriesWithStatus(2, $reverse);
 		}
 		
 		public function printApprovedGuestbookEntries($reverse) {
