@@ -112,7 +112,7 @@
 						$statusStyle = 'status pending';
 						$statusMsg = 'Pending';
 						
-						if ($status == 1) {
+						if ($status == 2) {
 							$statusStyle = 'status approved';
 							$statusMsg = 'Approved';
 						}
@@ -138,7 +138,7 @@
         <div class="margin_top_10">
           <!-- only visible when the status of the entry allows the entry to be posted -->
           <?php 
-          	if ($status == 0) {
+          	if ($status == 1) {
           		print ('<input type="submit" name="post" value="Post" onclick="setOperation(this);" />');
           	}
           ?>

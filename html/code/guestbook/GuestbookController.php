@@ -30,10 +30,25 @@
 			$this->_guestbookView->getApprovedGuestbookEntriesJSON();
 		}
 		
+		/**
+		 * cleans user input: removes html tags and slashes
+		 */
+		public function cleanInput($input) {
+			$value = strip_tags($input);
+			$value = stripslashes($value);
+
+			return $value;
+		}
+		
 		public function addGuestbookEntry($name, $email, $title, $comment) {
 			date_default_timezone_set('Europe/London'); 
-			$now = date('d/m/y H:i');
+			$now = date('d/m/Y H:i:s');
 			
+			$name = $this->cleanInput($name);
+			$email = $this->cleanInput($email); 
+			$title = $this->cleanInput($title);
+			$comment = $this->cleanInput($comment);
+			    
 			$guestbookEntry = $this->_guestbookModel->addGuestbookEntry($now, $name, $email, $title, $comment);
 			$this->_guestbookView->printInfoMessage('Your entry has been submitted. It will be displayed when the entry has been approved');
 		}
@@ -53,7 +68,7 @@
 				return;
 			}
 			
-			$this->_guestbookModel->updateStatus($entryId, 1);
+			$this->_guestbookModel->updateStatus($entryId, 2);
 			$this->_guestbookView->printInfoMessage('Entry approved');
 		}
 		

@@ -98,7 +98,7 @@
 			$dbCon = $connection->connect();
             
 			$query = 'insert into guestbook_entry (entry_date,entry_title,entry_comment,entry_author_name,entry_author_email,user_fk, status_fk)'.
-				' values (\''. $entryDate .'\',\''. $entryTitle .'\',\''. $entryComment .'\',\''. $entryAuthorName .'\',\''. $entryAuthorEmail .'\',1, 0)';
+				' values (\''. $entryDate .'\',\''. $entryTitle .'\',\''. $entryComment .'\',\''. $entryAuthorName .'\',\''. $entryAuthorEmail .'\',1, 1)';
 			
             $dbResult = $connection->query($dbCon, $query);
 			
@@ -154,7 +154,7 @@
 			
 			$dbCon = $connection->connect();
 			
-			$query = 'select count(entry_id) as count from guestbook_entry where status_fk = 0';
+			$query = 'select count(entry_id) as count from guestbook_entry where status_fk = 1';
 			
             $dbResult = $connection->query($dbCon, $query);
             

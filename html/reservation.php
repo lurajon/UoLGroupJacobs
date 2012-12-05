@@ -64,7 +64,7 @@ $reservationController = new ReservationController($pageModel, $pageView);
 								<a href="booking.html">Booking</a>
 							</li>
 							<li>
-								<a href="guestbook.html">Guestbook</a>
+								<a href="guestbook.php">Guestbook</a>
 							</li>
 							<li>
 								<a href="contactus.html">Contact Us</a>
