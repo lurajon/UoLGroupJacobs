@@ -5,7 +5,7 @@
 
 	function openConnection() {
 
-		$this->$dbSource = "Driver={Microsoft Access Driver (*.mdb)}; DBQ=d:\\inetpub\\wwwroot\\projects\\group60\\db\\uol_hotel.mdb"; //student server db
+		$this->dbSource = "Driver={Microsoft Access Driver (*.mdb)}; DBQ=d:\\inetpub\\wwwroot\\projects\\group60\\db\\uol_hotel.mdb"; //student server db
 		
 		$this -> dbUser = "";
 		$this -> dbPassword = "";
