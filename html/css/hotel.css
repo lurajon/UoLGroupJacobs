@@ -260,7 +260,7 @@ label {
 .nopointer {
 	cursor: default;
 }
-#availability_check fieldset {
+#booking_form fieldset {
 	border:none;
 	padding:0px !important;
 }
